@@ -1,19 +1,24 @@
-﻿using System;
+﻿using HealthInsuranceMgmt.Models.EFCore;
+using System;
 using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class PoliciesOnEmployees
+    public partial class PoliciesOnEmployees:IEntity
     {
+        public PoliciesOnEmployees()
+        {
+            Bill = new HashSet<Bill>();
+        }
+
         public int EmpId { get; set; }
         public int PolicyId { get; set; }
-        public string PolicyName { get; set; }
-        public decimal PolicyAmount { get; set; }
-        public int PolicyDuration { get; set; }
-        public decimal Emi { get; set; }
-        public DateTime PstartDate { get; set; }
-        public DateTime PendDate { get; set; }
-        public string CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public int Id { get; set; }
+        public int? StatusId { get; set; }
+
+        public virtual Employees Emp { get; set; }
+        public virtual Policies Policy { get; set; }
+        public virtual Status Status { get; set; }
+        public virtual ICollection<Bill> Bill { get; set; }
     }
 }

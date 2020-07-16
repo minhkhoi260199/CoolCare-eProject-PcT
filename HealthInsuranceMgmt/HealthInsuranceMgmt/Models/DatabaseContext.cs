@@ -16,21 +16,24 @@ namespace HealthInsuranceMgmt.Models
         }
 
         public virtual DbSet<AdminLogin> AdminLogin { get; set; }
+        public virtual DbSet<Bill> Bill { get; set; }
         public virtual DbSet<CompanyDetails> CompanyDetails { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Hospitals> Hospitals { get; set; }
+        public virtual DbSet<Medicals> Medicals { get; set; }
         public virtual DbSet<Policies> Policies { get; set; }
         public virtual DbSet<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
-        public virtual DbSet<PolicyApprovalDetails> PolicyApprovalDetails { get; set; }
         public virtual DbSet<PolicyRequestDetails> PolicyRequestDetails { get; set; }
-        public virtual DbSet<PolicyTotalDescription> PolicyTotalDescription { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<UserStatus> UserStatus { get; set; }
+        public virtual DbSet<UserType> UserType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-D7242R2\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=123456");
+                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=123456");
             }
         }
 
@@ -38,9 +41,19 @@ namespace HealthInsuranceMgmt.Models
         {
             modelBuilder.Entity<AdminLogin>(entity =>
             {
-                entity.HasKey(e => e.UserName);
+                entity.Property(e => e.Adrress)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.UserName)
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -48,12 +61,37 @@ namespace HealthInsuranceMgmt.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.UserTypeNavigation)
+                    .WithMany(p => p.AdminLogin)
+                    .HasForeignKey(d => d.UserType)
+                    .HasConstraintName("FK_AdminLogin_UserType");
+            });
+
+            modelBuilder.Entity<Bill>(entity =>
+            {
+                entity.Property(e => e.Description)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Insurance)
+                    .WithMany(p => p.Bill)
+                    .HasForeignKey(d => d.InsuranceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Bill_PoliciesOnEmployees");
             });
 
             modelBuilder.Entity<CompanyDetails>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Address)
                     .HasMaxLength(150)
                     .IsUnicode(false);
@@ -74,9 +112,6 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Employees>(entity =>
             {
-                entity.HasKey(e => e.EmpId)
-                    .HasName("PK_Employee");
-
                 entity.Property(e => e.Address)
                     .HasMaxLength(150)
                     .IsUnicode(false);
@@ -86,6 +121,7 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Country)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -120,13 +156,15 @@ namespace HealthInsuranceMgmt.Models
                 entity.Property(e => e.Username)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.StatusNavigation)
+                    .WithMany(p => p.Employees)
+                    .HasForeignKey(d => d.Status)
+                    .HasConstraintName("FK_Employees_UserStatus");
             });
 
             modelBuilder.Entity<Hospitals>(entity =>
             {
-                entity.HasKey(e => e.HospitalId)
-                    .HasName("PK_Hospital");
-
                 entity.Property(e => e.HospitalName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -144,10 +182,31 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Medicals>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.MedicalDescription)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MedicalName)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Company)
+                    .WithMany(p => p.Medicals)
+                    .HasForeignKey(d => d.CompanyId)
+                    .HasConstraintName("FK_Medicals_CompanyDetails");
+
+                entity.HasOne(d => d.Hospital)
+                    .WithMany(p => p.Medicals)
+                    .HasForeignKey(d => d.HospitalId)
+                    .HasConstraintName("FK_Medicals_Hospitals");
+            });
+
             modelBuilder.Entity<Policies>(entity =>
             {
-                entity.HasKey(e => e.PolicyId);
-
                 entity.Property(e => e.Amount).HasColumnType("money");
 
                 entity.Property(e => e.Emi).HasColumnType("money");
@@ -159,56 +218,36 @@ namespace HealthInsuranceMgmt.Models
                 entity.Property(e => e.PolicyName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Medical)
+                    .WithMany(p => p.Policies)
+                    .HasForeignKey(d => d.MedicalId)
+                    .HasConstraintName("FK_Policies_Medicals");
             });
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.EmpId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
 
-                entity.Property(e => e.CompanyId)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Policy)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.PolicyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Policies");
 
-                entity.Property(e => e.CompanyName)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.PendDate)
-                    .HasColumnName("PEndDate")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.PolicyAmount).HasColumnType("money");
-
-                entity.Property(e => e.PolicyName)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PstartDate)
-                    .HasColumnName("PStartDate")
-                    .HasColumnType("datetime");
-            });
-
-            modelBuilder.Entity<PolicyApprovalDetails>(entity =>
-            {
-                entity.HasKey(e => e.PolicyId);
-
-                entity.Property(e => e.Amount).HasColumnType("money");
-
-                entity.Property(e => e.ApprovedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Reason)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Status)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.StatusId)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Status");
             });
 
             modelBuilder.Entity<PolicyRequestDetails>(entity =>
             {
-                entity.HasKey(e => e.RequestId);
+                entity.Property(e => e.ApprovedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.CompanyName)
                     .HasMaxLength(50)
@@ -220,30 +259,36 @@ namespace HealthInsuranceMgmt.Models
 
                 entity.Property(e => e.PolicyName)
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Reason)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.Property(e => e.RequestDate).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<PolicyTotalDescription>(entity =>
+            modelBuilder.Entity<Status>(entity =>
             {
-                entity.HasKey(e => e.PolicyId);
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.CompanyName)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.PolicyAmount).HasColumnType("money");
-
-                entity.Property(e => e.PolicyDesc)
+                entity.Property(e => e.Status1)
+                    .HasColumnName("Status")
                     .HasMaxLength(250)
                     .IsUnicode(false);
+            });
 
-                entity.Property(e => e.PolicyName)
-                    .HasMaxLength(50)
+            modelBuilder.Entity<UserStatus>(entity =>
+            {
+                entity.Property(e => e.StatusName)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<UserType>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
             });
 

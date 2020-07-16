@@ -1,11 +1,17 @@
-﻿using System;
+﻿using HealthInsuranceMgmt.Models.EFCore;
+using System;
 using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Employees
+    public partial class Employees:IEntity
     {
-        public int EmpId { get; set; }
+        public Employees()
+        {
+            PoliciesOnEmployees = new HashSet<PoliciesOnEmployees>();
+        }
+
+        public int Id { get; set; }
         public string Designation { get; set; }
         public DateTime? JoinDate { get; set; }
         public decimal? Salary { get; set; }
@@ -18,7 +24,9 @@ namespace HealthInsuranceMgmt.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        public bool? PolicyStatus { get; set; }
-        public int? PolicyId { get; set; }
+        public int? Status { get; set; }
+
+        public virtual UserStatus StatusNavigation { get; set; }
+        public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
     }
 }
