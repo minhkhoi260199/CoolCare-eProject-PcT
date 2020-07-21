@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -32,8 +32,7 @@ namespace HealthInsuranceMgmt.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=123456");
+                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=P@ssw0rd");
             }
         }
 
