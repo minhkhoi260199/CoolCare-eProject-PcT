@@ -191,4 +191,8 @@ D:/Health_Insurance/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Auth/Login.cshtml.g.cs
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Auth/Register.cshtml.g.cs
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_AuthLayout.cshtml.g.cs
-/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_UserLayout.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Navbar/Index.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Navbar/Template.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Navbar/AdminNav.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Navbar/EmployeeNav.cshtml.g.cs

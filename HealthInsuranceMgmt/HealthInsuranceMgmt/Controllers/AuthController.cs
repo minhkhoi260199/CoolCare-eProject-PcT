@@ -10,7 +10,7 @@ namespace HealthInsuranceMgmt.Controllers
     {
         public IActionResult Login()
         {
-            
+
             return View("Login");
         }
     }
