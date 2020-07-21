@@ -17,9 +17,8 @@ namespace HealthInsuranceMgmt.Models
         public decimal? Amount { get; set; }
         public decimal? Emi { get; set; }
         public int? PolicyDuration { get; set; }
-        public int? MedicalId { get; set; }
+        public int MedicalId { get; set; }
 
-        public virtual Medicals Medical { get; set; }
         public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
     }
 }

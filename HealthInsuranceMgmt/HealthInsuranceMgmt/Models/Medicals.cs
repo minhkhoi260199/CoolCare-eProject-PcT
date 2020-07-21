@@ -6,11 +6,6 @@ namespace HealthInsuranceMgmt.Models
 {
     public partial class Medicals:IEntity
     {
-        public Medicals()
-        {
-            Policies = new HashSet<Policies>();
-        }
-
         public int Id { get; set; }
         public string MedicalName { get; set; }
         public string MedicalDescription { get; set; }
@@ -19,6 +14,5 @@ namespace HealthInsuranceMgmt.Models
 
         public virtual CompanyDetails Company { get; set; }
         public virtual Hospitals Hospital { get; set; }
-        public virtual ICollection<Policies> Policies { get; set; }
     }
 }

@@ -28,13 +28,6 @@ namespace HealthInsuranceMgmt.Models
         public virtual DbSet<UserStatus> UserStatus { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=P@ssw0rd");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -73,6 +66,7 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.UserTypeNavigation)
                     .WithMany(p => p.AdminLogin)
                     .HasForeignKey(d => d.UserType)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_AdminLogin_UserType");
             });
 
@@ -159,6 +153,7 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.Status)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Employees_UserStatus");
             });
 
@@ -183,8 +178,6 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Medicals>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.MedicalDescription)
                     .HasMaxLength(250)
                     .IsUnicode(false);
@@ -217,21 +210,10 @@ namespace HealthInsuranceMgmt.Models
                 entity.Property(e => e.PolicyName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Medical)
-                    .WithMany(p => p.Policies)
-                    .HasForeignKey(d => d.MedicalId)
-                    .HasConstraintName("FK_Policies_Medicals");
             });
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
-                entity.HasOne(d => d.Emp)
-                    .WithMany(p => p.PoliciesOnEmployees)
-                    .HasForeignKey(d => d.EmpId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
-
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.PolicyId)
@@ -241,6 +223,7 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.Status)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.StatusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PoliciesOnEmployees_Status");
             });
 

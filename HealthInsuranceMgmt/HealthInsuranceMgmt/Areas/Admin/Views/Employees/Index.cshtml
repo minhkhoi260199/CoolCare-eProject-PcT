@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}   <style>
+        #employeesTable tr th {
+            color: white;
+            font-weight: bold;
+            font-size: 15px
+        }
+        #employeesTable tbody tr td {
+            color: black;
+        }
+    </style>
+    <div style="text-align:center">
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2" id="employeesTable">
+                <thead style="background-color:black">
+                    <tr>
+                        <th>
+                            Index
+                        </th>
+                        <th>
+                            Employee's First Name
+                        </th>
+                        <th>
+                            Employee's Last Name
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            State
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Function Buttons
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTableBody">
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script src="~/js/Admin/employeesList.js"></script>

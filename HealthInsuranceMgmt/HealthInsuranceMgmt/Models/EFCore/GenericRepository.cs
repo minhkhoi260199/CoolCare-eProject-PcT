@@ -17,14 +17,17 @@ namespace HealthInsuranceMgmt.Models.EFCore
 
         public IQueryable<TEntity> GetAll()
         {
-            return _dbContext.Set<TEntity>().AsNoTracking();
+            //return _dbContext.Set<TEntity>().AsNoTracking();
+            return _dbContext.Set<TEntity>();
         }
 
         public async Task<TEntity> GetById(int id)
         {
+            //return await _dbContext.Set<TEntity>()
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync(e => e.Id == id);
             return await _dbContext.Set<TEntity>()
-                .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Id == id);
+              .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task Create(TEntity entity)
