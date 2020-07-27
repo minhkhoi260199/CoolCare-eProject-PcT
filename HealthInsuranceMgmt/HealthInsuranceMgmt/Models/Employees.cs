@@ -4,16 +4,11 @@ using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Employees:IEntity
+    public partial class Employees : IEntity
     {
-        public Employees()
-        {
-            PoliciesOnEmployees = new HashSet<PoliciesOnEmployees>();
-        }
-
         public int Id { get; set; }
         public string Designation { get; set; }
-        public DateTime? JoinDate { get; set; }
+        public DateTime JoinDate { get; set; }
         public decimal? Salary { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -24,9 +19,8 @@ namespace HealthInsuranceMgmt.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        public int? Status { get; set; }
+        public int Status { get; set; }
 
         public virtual UserStatus StatusNavigation { get; set; }
-        public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
     }
 }

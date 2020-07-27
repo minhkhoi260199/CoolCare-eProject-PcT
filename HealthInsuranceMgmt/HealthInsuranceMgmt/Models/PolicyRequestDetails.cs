@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class PolicyRequestDetails:IEntity
+    public partial class PolicyRequestDetails : IEntity
     {
         public int Id { get; set; }
         public DateTime? RequestDate { get; set; }

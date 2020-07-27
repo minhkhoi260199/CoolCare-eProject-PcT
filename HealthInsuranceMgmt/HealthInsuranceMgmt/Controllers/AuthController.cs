@@ -13,5 +13,11 @@ namespace HealthInsuranceMgmt.Controllers
 
             return View("Login");
         }
+
+        public IActionResult Register()
+        {
+
+            return View("Register");
+        }
     }
 }
