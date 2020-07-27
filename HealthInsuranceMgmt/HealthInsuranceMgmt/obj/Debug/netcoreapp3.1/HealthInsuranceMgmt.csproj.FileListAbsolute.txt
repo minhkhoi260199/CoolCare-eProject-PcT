@@ -274,3 +274,17 @@ D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp
 D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\HealthInsuranceMgmt.MvcApplicationPartsAssemblyInfo.cache
 D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Login\Index.cshtml.g.cs
 D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employees\Index.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employees\Detail.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employees\Create.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Companies\Index.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Companies\Detail.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Companies\Create.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Hospitals\Create.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Hospitals\Detail.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Hospitals\Index.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Medicals\Index.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Medicals\Detail.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Medicals\Create.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Policies\Create.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Policies\Detail.cshtml.g.cs
+D:\Health_Insurance\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Policies\Index.cshtml.g.cs

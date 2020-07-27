@@ -23,11 +23,11 @@ namespace HealthInsuranceMgmt.Models.EFCore
 
         public async Task<TEntity> GetById(int id)
         {
-            //return await _dbContext.Set<TEntity>()
-            //    .AsNoTracking()
-            //    .FirstOrDefaultAsync(e => e.Id == id);
             return await _dbContext.Set<TEntity>()
-              .FirstOrDefaultAsync(e => e.Id == id);
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id);
+            //return await _dbContext.Set<TEntity>()
+            //  .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task Create(TEntity entity)

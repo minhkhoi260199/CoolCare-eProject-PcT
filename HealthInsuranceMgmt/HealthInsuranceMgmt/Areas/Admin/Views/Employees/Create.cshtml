@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.Employees
+    <div class="container">
+        <form style="margin:auto" method="post" asp-controller="employees" asp-action="postcreate">
+            <div class="">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>First Name </label><span style="color:red; font-style: italic; width:200px; height:200px" asp-validation-for="FirstName"></span>
+                        <input asp-for="FirstName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Last Name <span style="color:red; font-style: italic" asp-validation-for="LastName"></span></label>
+                        <input asp-for="LastName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Designation <span style="color:red; font-style: italic" asp-validation-for="Designation"></span></label>
+                        <input asp-for="Designation" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>Salary <span style="color:red; font-style: italic" asp-validation-for="Salary"></span></label>
+                        <input asp-for="Salary" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>UserName <span style="color:red; font-style: italic" asp-validation-for="Username"></span></label>
+                        <input asp-for="Username" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Password <span style="color:red; font-style: italic" asp-validation-for="Password"></span></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>Address <span style="color:red; font-style: italic" asp-validation-for="Address"></span></label>
+                        <input asp-for="Address" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                        <input asp-for="Phone" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>State <span style="color:red; font-style: italic" asp-validation-for="State"></span></label>
+                        <input asp-for="State" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>City <span style="color:red; font-style: italic" asp-validation-for="City"></span></label>
+                        <input asp-for="City" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Country <span style="color:red; font-style: italic" asp-validation-for="Country"></span></label>
+                        <input asp-for="Country" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success form-control" id="btnSubmit">Create</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+<script src="~/js/Admin/employees/createEmployees.js"></script>

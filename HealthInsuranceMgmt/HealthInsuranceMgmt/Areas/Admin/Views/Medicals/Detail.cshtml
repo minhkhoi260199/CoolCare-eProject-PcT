@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.Medicals
+<div class="container">
+    <form style="margin:auto" method="post" asp-controller="medicals" asp-action="edit">
+        <input type="text" asp-for="Id" style="display:none" />
+        <div class="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Medical Name </label><span style="color:red; font-style: italic" asp-validation-for="MedicalName"></span>
+                    <input asp-for="MedicalName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Company Name <span style="color:red; font-style: italic" asp-validation-for="CompanyId"></span></label>
+                    <select asp-for="CompanyId" class="form-control">
+                        @foreach (var company in ViewBag.companies)
+                        {
+                            <option value="@company.Id">@company.CompanyName</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label>Hospital Name <span style="color:red; font-style: italic" asp-validation-for="HospitalId"></span></label>
+                    <select asp-for="HospitalId" class="form-control">
+                        @foreach (var hospital in ViewBag.hospitals)
+                        {
+                            <option value="@hospital.Id">@hospital.HospitalName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Medical Description <span style="color:red; font-style: italic" asp-validation-for="MedicalDescription"></span></label>
+                    <textarea class="form-control" asp-for="MedicalDescription" rows="5" cols="60"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success form-control" id="btnSubmit">Edit</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/Admin/medicals/detailMedicals.js"></script>
+

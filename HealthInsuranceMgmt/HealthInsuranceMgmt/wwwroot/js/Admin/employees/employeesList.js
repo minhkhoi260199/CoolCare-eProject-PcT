@@ -10,7 +10,12 @@
             if (data.status) {
                 $("#employeeTableBody").html(data.data);
             }
-            
         }
+    });
+    $("#createNew").on("click", function () {
+        window.location.href = "/admin/employees/create";
     })
-})
+});
+function getDetail(id) {
+    window.location.href = "/admin/employees/detail?id=" + id;
+}

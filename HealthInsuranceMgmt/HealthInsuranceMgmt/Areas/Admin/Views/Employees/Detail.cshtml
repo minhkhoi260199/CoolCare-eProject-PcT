@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.Employees
+    <div class="container">
+        <form style="margin:auto" method="post" asp-controller="employees" asp-action="edit">
+            <input type="text" asp-for="Id" style="display:none" />
+            <div class="">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>First Name </label><span style="color:red; font-style: italic" asp-validation-for="FirstName"></span>
+                        <input asp-for="FirstName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Last Name <span style="color:red; font-style: italic" asp-validation-for="LastName"></span></label>
+                        <input asp-for="LastName" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Designation <span style="color:red; font-style: italic" asp-validation-for="Designation"></span></label>
+                        <input asp-for="Designation" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>Salary <span style="color:red; font-style: italic" asp-validation-for="Salary"></span></label>
+                        <input asp-for="Salary" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>UserName <span style="color:red; font-style: italic" asp-validation-for="Username"></span></label>
+                        <input asp-for="Username" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Password <span style="color:red; font-style: italic" asp-validation-for="Password"></span></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>Address <span style="color:red; font-style: italic" asp-validation-for="Address"></span></label>
+                        <input asp-for="Address" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                        <input asp-for="Phone" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>State <span style="color:red; font-style: italic" asp-validation-for="State"></span></label>
+                        <input asp-for="State" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label>City <span style="color:red; font-style: italic" asp-validation-for="City"></span></label>
+                        <input asp-for="City" type="text" class="form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Country <span style="color:red; font-style: italic" asp-validation-for="Country"></span></label>
+                        <input asp-for="Country" type="text" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success form-control" id="btnSubmit">Edit</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-info form-control" id="showData" data-toggle="collapse" data-target="#showPolicies" aria-expanded="false" aria-controls="showPolicies">Show Employee's Policies</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="collapse" id="showPolicies">
+            @foreach (var policy in ViewBag.policies)
+            {
+                var color = "#F61919";
+                @if(policy.StatusId == 1)
+                {
+                    color = "#1DB006";
+                }
+                <div class="card card-body" style="background-color:#D1F8F9">
+                    <div>Policy Status: <span style="font-weight:bold; color:@color">@policy.Status.Status1</span></div>
+                    <div>Policy Name: <span style="font-weight:bold">@policy.Policy.PolicyName</span></div>
+                    <div>Policy Description: <span style="font-weight:bold">@policy.Policy.PolicyDesc</span></div>
+                    <div>Policy Total Amount: <span style="font-weight:bold">@policy.Policy.Amount</span></div>
+                    <div>Policy Monthly Payment: <span style="font-weight:bold">@policy.Policy.Emi</span></div>
+                    <div>Policy Duration: <span style="font-weight:bold">@policy.Policy.PolicyDuration</span></div>
+                    <div>======================================================================================</div>
+                    <div>Medical Name: <span style="font-weight:bold">@policy.Policy.Medical.MedicalName</span></div>
+                    <div>Company Name: <span style="font-weight:bold">@policy.Policy.Medical.Company.CompanyName</span></div>
+                    <div>Hospital Name: <span style="font-weight:bold">@policy.Policy.Medical.Hospital.HospitalName</span></div>
+                </div>
+            }
+        </div>
+    </div>
+<script src="~/js/Admin/employees/detailEmployees.js"></script>
+
+

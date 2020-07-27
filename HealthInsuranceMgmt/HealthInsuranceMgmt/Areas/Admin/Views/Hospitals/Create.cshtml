@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.Hospitals
+<div class="container">
+    <form style="margin:auto" method="post" asp-controller="hospitals" asp-action="postcreate">
+        <div class="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Company Name </label><span style="color:red; font-style: italic" asp-validation-for="HospitalName"></span>
+                    <input asp-for="HospitalName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Address <span style="color:red; font-style: italic" asp-validation-for="Location"></span></label>
+                    <input asp-for="Location" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                    <input asp-for="Phone" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Hospital Url <span style="color:red; font-style: italic" asp-validation-for="HospitalUrl"></span></label>
+                    <input asp-for="HospitalUrl" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success form-control" id="btnSubmit">Create</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/Admin/hospitals/createHospitals.js"></script>

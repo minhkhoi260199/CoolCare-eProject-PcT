@@ -28,6 +28,14 @@ namespace HealthInsuranceMgmt.Models
         public virtual DbSet<UserStatus> UserStatus { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=123456");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -210,6 +218,12 @@ namespace HealthInsuranceMgmt.Models
                 entity.Property(e => e.PolicyName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Medical)
+                    .WithMany(p => p.Policies)
+                    .HasForeignKey(d => d.MedicalId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Policies_Medicals");
             });
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
@@ -252,8 +266,6 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Status>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Status1)
                     .HasColumnName("Status")
                     .HasMaxLength(250)
