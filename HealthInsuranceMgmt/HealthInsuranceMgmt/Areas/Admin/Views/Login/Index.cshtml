@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AuthLayout.cshtml";
+}
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <label>Username <span style="color:red; font-style: italic" id="usernameError"></span></label>
+            <input type="text" class="form-control" id="username"/>
+        </div>
+        <div class="col-sm-12 form-group">
+            <label>Password <span style="color:red; font-style: italic" id="passwordError"></span></label>
+            <input type="password" class="form-control" id="password"/>
+        </div>
+        <div class="col-sm-12 form-group" style="text-align:center">
+            <button type="button" class="btn btn-success" id="signIn">Sign In</button>
+        </div>
+    </div>
+    <script src="~/js/Admin/login.js"></script>

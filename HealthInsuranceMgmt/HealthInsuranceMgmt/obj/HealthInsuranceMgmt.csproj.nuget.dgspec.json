@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Aptech_HK3\\SEM3-eProject-clone\\SEM3-eProject-PcT\\HealthInsuranceMgmt\\HealthInsuranceMgmt\\HealthInsuranceMgmt.csproj": {}
+    "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/HealthInsuranceMgmt.csproj": {}
   },
   "projects": {
-    "E:\\Aptech_HK3\\SEM3-eProject-clone\\SEM3-eProject-PcT\\HealthInsuranceMgmt\\HealthInsuranceMgmt\\HealthInsuranceMgmt.csproj": {
+    "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/HealthInsuranceMgmt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Aptech_HK3\\SEM3-eProject-clone\\SEM3-eProject-PcT\\HealthInsuranceMgmt\\HealthInsuranceMgmt\\HealthInsuranceMgmt.csproj",
+        "projectUniqueName": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/HealthInsuranceMgmt.csproj",
         "projectName": "HealthInsuranceMgmt",
-        "projectPath": "E:\\Aptech_HK3\\SEM3-eProject-clone\\SEM3-eProject-PcT\\HealthInsuranceMgmt\\HealthInsuranceMgmt\\HealthInsuranceMgmt.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Aptech_HK3\\SEM3-eProject-clone\\SEM3-eProject-PcT\\HealthInsuranceMgmt\\HealthInsuranceMgmt\\obj\\",
+        "projectPath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/HealthInsuranceMgmt.csproj",
+        "packagesPath": "/home/coollahn/.nuget/packages/",
+        "outputPath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/coollahn/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -85,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
         }
       }
     }

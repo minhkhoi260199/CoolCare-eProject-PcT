@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #medicalsTable tr th {
+        color: white;
+        font-weight: bold;
+        font-size: 15px
+    }
+
+    #medicalsTable tbody tr td {
+        color: black;
+    }
+</style>
+<div style="text-align:center">
+    <div class="form-control">
+        <button id="createNew" type="button" class="btn btn-success">Create New Medical</button>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2" id="medicalsTable">
+            <thead style="background-color:black">
+                <tr>
+                    <th>
+                        Index
+                    </th>
+                    <th>
+                        Medical Name
+                    </th>
+                    <th>
+                        Medical Description
+                    </th>
+                    <th>
+                        Company Name
+                    </th>
+                    <th>
+                        Hospital Name
+                    </th>
+                    <th>
+                        Function Buttons
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="medicalTableBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/js/Admin/medicals/medicalsList.js"></script>
+

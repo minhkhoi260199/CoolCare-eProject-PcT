@@ -17,21 +17,24 @@ namespace HealthInsuranceMgmt
     public class Startup
     {
         private IConfiguration configuration;
-
         public Startup(IConfiguration _configuration)
         {
             configuration = _configuration;
         }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<DatabaseContext>(option => option.UseLazyLoadingProxies().UseSqlServer(connectionString));
-
+            services.AddDbContext<DatabaseContext>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString));
             services.AddScoped<IAdminLoginResponsitory, AdminLoginRespository>();
+            services.AddScoped<IEmployeesResponsitory, EmployeesResponsitory>();
+            services.AddScoped<IPoliciesOnEmployeesResponsitory, PoliciesOnEmployeesResponsitory>();
 
+            services.AddScoped<ICompanyDetailsResponsitory, CompanyDetailsResponsitory>();
+            services.AddScoped<IMedicalsResponsitory, MedicalsResponsitory>();
+            services.AddScoped<IPoliciesResponsitory, PoliciesResponsitory>();
+
+            services.AddScoped<IHospitalsResponsitory, HospitalsResponsitory>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -17,7 +17,7 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            
+            ViewBag.pageTitle = "Home Page";
                 return View();
         }
     }
