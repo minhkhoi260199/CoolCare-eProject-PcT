@@ -276,14 +276,14 @@ section {
 .page-wrapper {
     overflow: hidden;
     background: #e5e5e5;
-    padding-bottom: 8vh;
+    padding-bottom: 0vh;
 }
 
 @media (max-width: 991px) {
     .page-wrapper {
     overflow: auto;
     background: #e5e5e5;
-    padding-bottom: 12vh;
+    padding-bottom: 0vh;
 }
 }
 .page-container {
