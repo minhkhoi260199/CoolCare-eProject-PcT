@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Status:IEntity
+    public partial class Status : IEntity
     {
         public Status()
         {

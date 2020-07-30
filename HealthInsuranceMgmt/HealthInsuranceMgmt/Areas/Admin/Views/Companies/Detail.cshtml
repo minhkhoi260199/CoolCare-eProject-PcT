@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.CompanyDetails
+<div class="container">
+    <form style="margin:auto" method="post" asp-controller="companies" asp-action="edit">
+        <input type="text" asp-for="Id" style="display:none" />
+        <div class="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Company Name </label><span style="color:red; font-style: italic" asp-validation-for="CompanyName"></span>
+                    <input asp-for="CompanyName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Address <span style="color:red; font-style: italic" asp-validation-for="Address"></span></label>
+                    <input asp-for="Address" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                    <input asp-for="Phone" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Company Url <span style="color:red; font-style: italic" asp-validation-for="CompanyUrl"></span></label>
+                    <input asp-for="CompanyUrl" type="text" class="form-control" />
+                </div>         
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success form-control" id="btnSubmit">Edit</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/Admin/companies/detailCompanies.js"></script>
+

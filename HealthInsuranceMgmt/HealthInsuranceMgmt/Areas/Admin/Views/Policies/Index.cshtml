@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #policiesTable tr th {
+        color: white;
+        font-weight: bold;
+        font-size: 15px
+    }
+
+    #policiesTable tbody tr td {
+        color: black;
+    }
+</style>
+<div style="text-align:center">
+    <div class="form-control">
+        <button id="createNew" type="button" class="btn btn-success">Create New Policy</button>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2" id="policiesTable">
+            <thead style="background-color:black">
+                <tr>
+                    <th>
+                        Index
+                    </th>
+                    <th>
+                        Policy Name
+                    </th>
+                    <th>
+                        Policy Description
+                    </th>
+                    <th>
+                        Medical Name
+                    </th>
+                    <th>
+                        Company Name
+                    </th>
+                    <th>
+                        Hospital Name
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Monthly Payment
+                    </th>
+                    <th>
+                        Policy Duration
+                    </th>
+                    <th>
+                        Function Buttons
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="policyTableBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/js/Admin/policies/policiesList.js"></script>

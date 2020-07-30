@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.Policies
+<div class="container">
+    <form style="margin:auto" method="post" asp-controller="policies" asp-action="edit">
+        <input type="text" asp-for="Id" style="display:none" />
+        <div class="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Policy Name </label><span style="color:red; font-style: italic" asp-validation-for="PolicyName"></span>
+                    <input asp-for="PolicyName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Amount </label><span style="color:red; font-style: italic" asp-validation-for="Amount"></span>
+                    <input asp-for="Amount" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Monthly Payment </label><span style="color:red; font-style: italic" asp-validation-for="Emi"></span>
+                    <input asp-for="Emi" type="text" class="form-control" />
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Policy Duration </label><span style="color:red; font-style: italic" asp-validation-for="PolicyDuration"></span>
+                    <input asp-for="PolicyDuration" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-8">
+                    <label>Medical Name <span style="color:red; font-style: italic" asp-validation-for="MedicalId"></span></label>
+                    <select asp-for="MedicalId" class="form-control">
+                        @foreach (var medical in ViewBag.medicals)
+                        {
+                            <option value="@medical.Id">@medical.MedicalName (Hospital: @medical.Hospital.HospitalName , Company: @medical.Company.CompanyName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-8">
+                    <label>Policy Description <span style="color:red; font-style: italic" asp-validation-for="PolicyDesc"></span></label>
+                    <textarea class="form-control" asp-for="PolicyDesc" rows="5" cols="60"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success form-control" id="btnSubmit">Edit</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/Admin/policies/detailPolicies.js"></script>

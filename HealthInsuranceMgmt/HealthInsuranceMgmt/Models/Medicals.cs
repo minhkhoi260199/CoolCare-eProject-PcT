@@ -1,10 +1,11 @@
 ﻿using HealthInsuranceMgmt.Models.EFCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Medicals:IEntity
+    public partial class Medicals : IEntity
     {
         public Medicals()
         {
@@ -12,9 +13,12 @@ namespace HealthInsuranceMgmt.Models
         }
 
         public int Id { get; set; }
+        [Required]
         public string MedicalName { get; set; }
         public string MedicalDescription { get; set; }
+        [Required]
         public int? CompanyId { get; set; }
+        [Required]
         public int? HospitalId { get; set; }
 
         public virtual CompanyDetails Company { get; set; }

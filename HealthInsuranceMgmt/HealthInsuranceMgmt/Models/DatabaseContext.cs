@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -32,7 +32,7 @@ namespace HealthInsuranceMgmt.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=ADMIN\\SQLEXPRESS;Database=HealthInsuranceMgmt;user id=sa;password=P@ssw0rd");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=HealthInsuranceMgmt;user id=sa;password=P@ssw0rd");
             }
         }
 
@@ -73,6 +73,7 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.UserTypeNavigation)
                     .WithMany(p => p.AdminLogin)
                     .HasForeignKey(d => d.UserType)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_AdminLogin_UserType");
             });
 
@@ -159,12 +160,14 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.Status)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Employees_UserStatus");
             });
 
             modelBuilder.Entity<Hospitals>(entity =>
             {
                 entity.Property(e => e.HospitalName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -183,24 +186,25 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Medicals>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.MedicalDescription)
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicalName)
+                    .IsRequired()
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Company)
                     .WithMany(p => p.Medicals)
                     .HasForeignKey(d => d.CompanyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Medicals_CompanyDetails");
 
                 entity.HasOne(d => d.Hospital)
                     .WithMany(p => p.Medicals)
                     .HasForeignKey(d => d.HospitalId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Medicals_Hospitals");
             });
 
@@ -221,17 +225,12 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.Medical)
                     .WithMany(p => p.Policies)
                     .HasForeignKey(d => d.MedicalId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Policies_Medicals");
             });
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
-                entity.HasOne(d => d.Emp)
-                    .WithMany(p => p.PoliciesOnEmployees)
-                    .HasForeignKey(d => d.EmpId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
-
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.PolicyId)
@@ -241,6 +240,7 @@ namespace HealthInsuranceMgmt.Models
                 entity.HasOne(d => d.Status)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.StatusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PoliciesOnEmployees_Status");
             });
 
@@ -269,8 +269,6 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Status>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Status1)
                     .HasColumnName("Status")
                     .HasMaxLength(250)
