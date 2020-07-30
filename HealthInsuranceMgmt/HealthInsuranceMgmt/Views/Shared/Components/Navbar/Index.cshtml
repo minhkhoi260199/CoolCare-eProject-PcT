@@ -4,7 +4,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="#">
-                            <img src="~/images/icon/logo-white.png" alt="CoolAdmin" />
+                            <img src="~/images/icon/logo-white-client.png" alt="CoolAdmin" />
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -37,50 +37,12 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="header__tool">
-                        <div class="account-wrap">
-                            <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <div class="image">
-                                    <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
-                                </div>
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">User</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown">
-                                    <div class="info clearfix">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">User</a>
-                                            </h5>
-                                            <span class="email">User@example.com</span>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="header__tool" style="z-index:1">
+                        <a asp-controller="auth" asp-action="index">
+                            <button type="button" class="btn btn-primary">
+                                Login &nbsp;
+                            <i class="fa fa-star"></i></button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -93,7 +55,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="~/images/icon/logo-white.png" alt="CoolAdmin" />
+                            <img src="~/images/icon/logo-white-client.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">

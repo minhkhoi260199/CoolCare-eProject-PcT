@@ -12,5 +12,9 @@ namespace HealthInsuranceMgmt.Models.Respositories
         {
 
         }
+        public Employees Login(string username, string password)
+        {
+            return GetAll().Where(p => p.Username.Equals(username) && p.Password.Equals(password)).SingleOrDefault();
+        }
     }
 }

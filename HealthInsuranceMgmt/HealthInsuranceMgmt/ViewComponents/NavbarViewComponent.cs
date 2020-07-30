@@ -15,4 +15,13 @@ namespace HealthInsuranceMgmt.ViewComponents
             return View("Index");
         }
     }
+    [ViewComponent(Name = "AdNavbar")]
+    public class AdNavbarViewComponent : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            //Check session for information
+            return View("AdminNav");
+        }
+    }
 }
