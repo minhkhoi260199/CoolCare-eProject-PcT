@@ -168,6 +168,7 @@ namespace HealthInsuranceMgmt.Models
             modelBuilder.Entity<Hospitals>(entity =>
             {
                 entity.Property(e => e.HospitalName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -191,17 +192,20 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.MedicalName)
+                    .IsRequired()
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Company)
                     .WithMany(p => p.Medicals)
                     .HasForeignKey(d => d.CompanyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Medicals_CompanyDetails");
 
                 entity.HasOne(d => d.Hospital)
                     .WithMany(p => p.Medicals)
                     .HasForeignKey(d => d.HospitalId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Medicals_Hospitals");
             });
 
@@ -228,6 +232,12 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.EmpId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
+
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.PolicyId)
@@ -244,18 +254,6 @@ namespace HealthInsuranceMgmt.Models
             modelBuilder.Entity<PolicyRequestDetails>(entity =>
             {
                 entity.Property(e => e.ApprovedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.CompanyName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.PolicyAmount).HasColumnType("money");
-
-                entity.Property(e => e.PolicyName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Reason)
                     .HasMaxLength(250)

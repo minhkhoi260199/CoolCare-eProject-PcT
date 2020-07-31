@@ -1,10 +1,9 @@
-﻿using HealthInsuranceMgmt.Models.EFCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Bill:IEntity
+    public partial class Bill
     {
         public int Id { get; set; }
         public int InsuranceId { get; set; }

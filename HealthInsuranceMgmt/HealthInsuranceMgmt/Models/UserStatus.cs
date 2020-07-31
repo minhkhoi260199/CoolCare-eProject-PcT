@@ -1,10 +1,9 @@
-﻿using HealthInsuranceMgmt.Models.EFCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class UserStatus:IEntity
+    public partial class UserStatus
     {
         public UserStatus()
         {
