@@ -3,34 +3,40 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-@foreach (var policy in ViewBag.policies)
-{
-    <div class="col-md-6">
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var policy in ViewBag.policies)
+        {
 
-        <div class="card">
+            <div class="col-md-6">
 
-            <div class="card-header">
+                <div class="card">
 
-                <strong class="card-title">@policy.PolicyName</strong>
-            </div>
-            <div class="card-body">
-                <div class="alert alert-success" role="alert">
+                    <div class="card-header">
 
-                    <h4 class="alert-heading">Policies</h4>
-                    <p>
-                        @policy.PolicyDesc
-                    </p>
-                    <hr>
-                    <p class="mb-0">
-                        <a>Amount: </a> @policy.Amount<br>
-                        <a>Emi: </a> @policy.Emi<br>
-                        <a>Duration(months): </a> @policy.PolicyDuration<br>
-                    </p>
+                        <strong class="card-title">@policy.PolicyName</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success" role="alert">
+
+                            <h4 class="alert-heading">Policies</h4>
+                            <p>
+                                @policy.PolicyDesc
+                            </p>
+                            <hr>
+                            <p class="mb-0">
+                                <a>Amount: </a> @policy.Amount<br>
+                                <a>Emi: </a> @policy.Emi<br>
+                                <a>Duration(months): </a> @policy.PolicyDuration<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="auth" asp-action="Register">Register</a>
+                    </div>
                 </div>
             </div>
-            <div>
-                <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="auth" asp-action="Register">Register</a>
-            </div>
-         </div>
+
+        }
     </div>
-}
+</div>
