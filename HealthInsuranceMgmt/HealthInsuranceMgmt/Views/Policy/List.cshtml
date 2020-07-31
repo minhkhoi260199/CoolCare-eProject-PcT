@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Policy Name</th>
+                <th>Description</th>
+                <th>Hospital</th>
+                <th>Amount</th>
+                <th>Emi</th>
+                <th>Duration</th>
+                <th>Mecical</th>
+                <th>Insurance Company</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ var i = 0;}
+            @foreach (var policy in ViewBag.policies)
+            {
+                i++;
+                <tr>
+                    <td><span>@i</span></td>
+                    <td>@policy.PolicyName</td>
+                    <td>@policy.PolicyDesc</td>
+                    <td>@policy.Medical.Hospital.HospitalName</td>
+                    <td>@policy.Amount</td>
+                    <td>@policy.Emi</td>
+                    <td>@policy.PolicyDuration</td>
+                    <td>@policy.Medical.MedicalName</td>
+                    <td>@policy.Medical.Company.CompanyName</td>
+                    <td>
+                        <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="auth" asp-action="Register">Register</a>
+                    </td>
+                </tr>
+            }
+            <tr class="spacer"></tr>
+        </tbody>
+    </table>
+</div>

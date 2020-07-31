@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class Hospitals:IEntity
+    public partial class Hospitals : IEntity
     {
         public Hospitals()
         {

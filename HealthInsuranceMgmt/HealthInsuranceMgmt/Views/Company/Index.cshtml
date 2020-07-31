@@ -1,0 +1,38 @@
+﻿@{ 
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+ }
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Company Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Website</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ var i = 0;}
+            @foreach (var company in ViewBag.companies)
+            {
+                i++;
+                <tr class="tr-shadow">
+                    <td><span>@i</span></td>
+                    <td>@company.CompanyName</td>
+                    <td>@company.Address</td>
+                    <td>@company.Phone</td>
+                    <td>
+                        <a href="@company.CompanyUrl">@company.CompanyUrl</a></td>
+                    <td>
+                        <a asp-controller="medical" asp-action="index" asp-route-id="@company.Id">View Medicals</a>
+                    </td>
+                </tr>}
+            <tr class="spacer"></tr>
+        </tbody>
+    </table>
+</div>
+

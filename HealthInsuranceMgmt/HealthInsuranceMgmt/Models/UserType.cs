@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class UserType:IEntity
+    public partial class UserType : IEntity
     {
         public UserType()
         {
