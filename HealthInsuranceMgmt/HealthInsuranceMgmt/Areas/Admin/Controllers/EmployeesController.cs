@@ -35,8 +35,11 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             var count = 0;
             foreach (var employee in employees)
             {
-                var color = "";
+                var color = "green";
                 if(employee.Status == 3)
+                {
+                    color = "orange";
+                }else if(employee.Status == 1)
                 {
                     color = "red";
                 }
@@ -58,6 +61,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     "<td style='color:"+color+"; font-weight:bold'>" + employee.StatusNavigation.StatusName+ "</td>" +
                     "<td>" +
                     "<a href='#' onclick='getDetail("+employee.Id.ToString()+")' style='font-weight:bold'>More Details</a>" +
+                    " | <a href='#' style='color:red;font-weight:bold' id='blockBtn' onclick='blockBtn("+employee.Id.ToString()+")'>Block</a>" +
                     "</td></tr>";
                 if(count < employees.Count())
                 {
@@ -164,6 +168,18 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             }
            
             return View("create");
+        }
+
+        [Route("block")]
+        public async Task<IActionResult> Block(int id)
+        {
+            var employee = await iemployeesResponsitory.GetById(id);
+            employee.Status = 1;
+            await iemployeesResponsitory.Update(id, employee);
+            return Json(new[] { new
+                {
+                    data = true
+                }});
         }
     }
 }

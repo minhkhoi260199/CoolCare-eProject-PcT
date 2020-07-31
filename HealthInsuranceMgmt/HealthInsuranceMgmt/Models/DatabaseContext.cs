@@ -231,6 +231,12 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.EmpId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
+
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.PolicyId)
@@ -247,18 +253,6 @@ namespace HealthInsuranceMgmt.Models
             modelBuilder.Entity<PolicyRequestDetails>(entity =>
             {
                 entity.Property(e => e.ApprovedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.CompanyName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.PolicyAmount).HasColumnType("money");
-
-                entity.Property(e => e.PolicyName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Reason)
                     .HasMaxLength(250)

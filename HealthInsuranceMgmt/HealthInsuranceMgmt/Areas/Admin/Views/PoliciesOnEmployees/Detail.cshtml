@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@*@model HealthInsuranceMgmt.Models.PoliciesOnEmployees*@
+<div class="container">
+    <input type="text" id="id" value="@ViewBag.policy.Id" style="display:none" />
+    <div class="">
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>First Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.FirstName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Last Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.LastName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Designation </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.Designation" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>Salary </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.Salary" />
+            </div>
+            <div class="col-sm-4">
+                <label>City </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.City" />
+            </div>
+            <div class="col-sm-4">
+                <label>State </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Emp.State" />
+            </div>
+        </div>
+        <div>
+           <hr style="height:5px;color:blue;background-color:gray"/>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>Company's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.Medical.Company.CompanyName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Hospital's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.Medical.Hospital.HospitalName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Hospital's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.Medical.MedicalName" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>Policy's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.PolicyName" />
+            </div>
+            <div class="col-sm-8">
+                <label>Policy's Description </label>
+                <textarea class="form-control" rows="5" cols="60">@ViewBag.policy.Policy.PolicyDesc</textarea>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>Policy's Duration </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.PolicyDuration" />
+            </div>
+            <div class="col-sm-4">
+                <label>Policy's Amount </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.Amount" />
+            </div>
+            <div class="col-sm-4">
+                <label>Monthly Payment </label>
+                <input type="text" class="form-control" value="@ViewBag.policy.Policy.Emi" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success form-control" id="acceptedBtn" onclick="acceptedBtn(@ViewBag.policy.Id)">Accept</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger form-control" id="deniedBtn" onclick="deniedBtn(@ViewBag.policy.Id)">Deny</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Admin/policiesonemployees/detailPoliciesOnEmployees.js"></script>
+

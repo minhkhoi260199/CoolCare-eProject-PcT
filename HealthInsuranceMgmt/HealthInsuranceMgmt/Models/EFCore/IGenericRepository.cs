@@ -15,5 +15,7 @@ namespace HealthInsuranceMgmt.Models.EFCore
         Task Update(int id, TEntity entity);
 
         Task Delete(int id);
+
+        Task<TEntity> GetByIdHavingTracking(int id);
     }
 }
