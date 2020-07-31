@@ -31,7 +31,7 @@ namespace HealthInsuranceMgmt.Controllers
             {
                 return RedirectToAction("index","company");
             }
-            return new JsonResult(false);
+            return View();
         }
     }
 }

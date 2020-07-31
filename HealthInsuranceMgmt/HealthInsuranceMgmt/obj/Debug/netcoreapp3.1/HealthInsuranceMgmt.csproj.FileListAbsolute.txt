@@ -542,3 +542,5 @@ D:/Health_Insurance/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/AdNavBar/AdminNav.cshtml.g.cs
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/AdNavBar/FManagerNav.cshtml.g.cs
 /home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/AdNavBar/ManagerNav.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/PoliciesOnEmployees/Detail.cshtml.g.cs
+/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/PoliciesOnEmployees/Index.cshtml.g.cs
