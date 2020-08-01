@@ -6,6 +6,11 @@ namespace HealthInsuranceMgmt.Models
 {
     public partial class Employees : IEntity
     {
+        public Employees()
+        {
+            PoliciesOnEmployees = new HashSet<PoliciesOnEmployees>();
+        }
+
         public int Id { get; set; }
         public string Designation { get; set; }
         public DateTime JoinDate { get; set; }
@@ -22,5 +27,6 @@ namespace HealthInsuranceMgmt.Models
         public int Status { get; set; }
 
         public virtual UserStatus StatusNavigation { get; set; }
+        public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
     }
 }

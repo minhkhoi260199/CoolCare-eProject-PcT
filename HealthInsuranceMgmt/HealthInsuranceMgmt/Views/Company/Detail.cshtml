@@ -1,0 +1,28 @@
+﻿@Ajax.ActionLink
+    (
+    "Open popup", 
+    "SomeAction", 
+    new AjaxOptions 
+    {   HttpMethod = "GET", 
+        UpdateTargetId = "result", 
+        InsertionMode = InsertionMode.Replace, 
+        OnSuccess = "openPopup" })
+<br />
+
+<div id="result" style="display:none;"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+       $("#result").dialog({
+           autoOpen: false,
+           title: 'Title',
+           width: 500,
+           height: 'auto',
+           modal: true
+       });
+});
+function openPopup() {
+       $("#result").dialog("open");
+}
+</script>
+

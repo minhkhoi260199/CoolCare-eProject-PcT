@@ -31,6 +31,7 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("list")]
         public IActionResult List(int id)
         {
+            ViewBag.pageTitle = "Insurance packages";
             ViewBag.policies = db.Policies.ToList();
             return View("List");
         }

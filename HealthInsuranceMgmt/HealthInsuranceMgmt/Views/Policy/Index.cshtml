@@ -18,11 +18,11 @@
                     </div>
                     <div class="card-body">
                         <div class="alert alert-success" role="alert">
-
-                            <h4 class="alert-heading">Policies</h4>
-                            <p>
-                                @policy.PolicyDesc
-                            </p>
+                            <h4 class="alert-heading">Medical</h4>
+                            <p>@policy.Medical.MedicalDescription</p>
+                            <h4 class="alert-heading">Policy</h4>
+                            <p>@policy.PolicyDesc</p>
+                            <p><a>Hospital:</a> @policy.Medical.Hospital.HospitalName</p>
                             <hr>
                             <p class="mb-0">
                                 <a>Amount: </a> @policy.Amount<br>

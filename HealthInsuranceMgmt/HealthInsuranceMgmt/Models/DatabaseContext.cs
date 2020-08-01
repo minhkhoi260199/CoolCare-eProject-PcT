@@ -232,6 +232,12 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.PoliciesOnEmployees)
+                    .HasForeignKey(d => d.EmpId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PoliciesOnEmployees_Employees");
+
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.PolicyId)

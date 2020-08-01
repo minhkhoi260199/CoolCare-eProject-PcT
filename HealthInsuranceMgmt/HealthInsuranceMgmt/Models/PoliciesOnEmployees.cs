@@ -16,6 +16,7 @@ namespace HealthInsuranceMgmt.Models
         public int Id { get; set; }
         public int StatusId { get; set; }
 
+        public virtual Employees Emp { get; set; }
         public virtual Policies Policy { get; set; }
         public virtual Status Status { get; set; }
         public virtual ICollection<Bill> Bill { get; set; }
