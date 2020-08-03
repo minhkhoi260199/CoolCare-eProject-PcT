@@ -12,5 +12,10 @@ namespace HealthInsuranceMgmt.Models.Respositories
         {
 
         }
+
+        public PoliciesOnEmployees SearchByEmpIdAndPoliId(int empId, int policyId)
+        {
+            return GetAll().Where(i => i.EmpId.Equals(empId) && i.PolicyId.Equals(policyId)).SingleOrDefault();
+        }
     }
 }

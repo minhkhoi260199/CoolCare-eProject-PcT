@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -19,12 +20,15 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
         {
             ihospitalsResponsitory = _ihospitalsResponsitory;
         }
+
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
         public IActionResult ShowData()
         {
@@ -61,6 +65,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -68,6 +73,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", hospital);
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("edit")]
         public async Task<IActionResult> Edit(Hospitals hospital)
         {
@@ -80,12 +86,14 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", hospital);
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("create")]
         public IActionResult Create()
         {
             return View("create");
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("postcreate")]
         public async Task<IActionResult> PostCreate(Hospitals hospital)
         {

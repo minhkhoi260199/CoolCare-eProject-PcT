@@ -1,21 +1,12 @@
 ﻿$(document).ready(function () {
     $("#pageTitle").html("");
-    $("#pageTitle").html("Employees' Policies List");
-    loadData();
-
-});
-function loadData() {
-    $.ajax({
-        url: "/admin/policiesonemployees/listData",
-        type: "POST",
-        success: function (res) {
-            let data = res[0];
-            if (data.status) {
-                $("#policiesEmployeesTableBody").html(data.data);
-            }
-        }
+    $("#pageTitle").html("Policy Request Detail");
+    $(".form-control").prop("readonly", true);
+    $("#btnGoback").on("click", function () {
+        window.location.href = "/admin/policyrequest/list";
     });
-}
+})
+
 function deniedBtn(id) {
     swal({
         title: "Cancel Confirm?",
@@ -29,7 +20,7 @@ function deniedBtn(id) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: '/admin/policiesonemployees/deny',
+                url: '/admin/policyrequest/deny',
                 type: "POST",
                 data: { id: id },
                 success: function (res) {
@@ -43,8 +34,7 @@ function deniedBtn(id) {
                             timer: 2500,
                             button: "Close",
                         }).then((value) => {
-                            $("#policiesEmployeesTableBody").html("");
-                            loadData();
+                            window.location.href = "/admin/policyrequest/list";
                         });
                     }
                 }
@@ -66,7 +56,7 @@ function acceptedBtn(id) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: '/admin/policiesonemployees/accept',
+                url: '/admin/policyrequest/accept',
                 type: "POST",
                 data: { id: id },
                 success: function (res) {
@@ -80,16 +70,11 @@ function acceptedBtn(id) {
                             timer: 2500,
                             button: "Close",
                         }).then((value) => {
-                            $("#policiesEmployeesTableBody").html("");
-                            loadData();
+                            window.location.href = "/admin/policyrequest/list";
                         });
                     }
                 }
             });
         }
     });
-}
-
-function getDetail(id) {
-    window.location.href = "/admin/policiesonemployees/detail?id=" + id;
 }

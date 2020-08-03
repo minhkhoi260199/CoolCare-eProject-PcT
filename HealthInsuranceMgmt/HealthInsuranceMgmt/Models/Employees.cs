@@ -8,6 +8,7 @@ namespace HealthInsuranceMgmt.Models
         public Employees()
         {
             PoliciesOnEmployees = new HashSet<PoliciesOnEmployees>();
+            PolicyRequestDetails = new HashSet<PolicyRequestDetails>();
         }
 
         public int Id { get; set; }
@@ -27,5 +28,6 @@ namespace HealthInsuranceMgmt.Models
 
         public virtual UserStatus StatusNavigation { get; set; }
         public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
+        public virtual ICollection<PolicyRequestDetails> PolicyRequestDetails { get; set; }
     }
 }

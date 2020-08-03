@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface IPoliciesOnEmployeesResponsitory : IGenericRepository<PoliciesOnEmployees>
-    { 
-
+    {
+        public PoliciesOnEmployees SearchByEmpIdAndPoliId(int empId, int policyId);
     }
 }

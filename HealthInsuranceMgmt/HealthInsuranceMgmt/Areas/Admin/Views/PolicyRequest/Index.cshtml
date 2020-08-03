@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #policyRequestTable tr th {
+        color: white;
+        font-weight: bold;
+        font-size: 15px
+    }
+
+    #policyRequestTable tbody tr td {
+        color: black;
+    }
+</style>
+<div style="text-align:center">
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2" id="policyRequestTable">
+            <thead style="background-color:black">
+                <tr>
+                    <th>
+                        Index
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Employee's First Name
+                    </th>
+                    <th>
+                        Employee's Last Name
+                    </th>
+                    <th>
+                        Policy's Name
+                    </th>
+                    <th>
+                        Request's Content
+                    </th>
+                    <th>
+                        Approved Date
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Function Buttons
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="policyRequestTableBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/js/Admin/policyrequest/policyRequestList.js"></script>

@@ -1,22 +1,22 @@
 ﻿$(document).ready(function () {
     $("#pageTitle").html("");
-    $("#pageTitle").html("Employees' Policies List");
+    $("#pageTitle").html("Policy Request List");
     loadData();
 
 });
 function loadData() {
     $.ajax({
-        url: "/admin/policiesonemployees/listData",
+        url: "/admin/policyrequest/listData",
         type: "POST",
         success: function (res) {
             let data = res[0];
             if (data.status) {
-                $("#policiesEmployeesTableBody").html(data.data);
+                $("#policyRequestTableBody").html(data.data);
             }
         }
     });
 }
-function deniedBtn(id) {
+function deniedBtn(idPolOnEm) {
     swal({
         title: "Cancel Confirm?",
         text: "Do you want to cancel this user's policy?",
@@ -29,9 +29,9 @@ function deniedBtn(id) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: '/admin/policiesonemployees/deny',
+                url: '/admin/policyrequest/deny',
                 type: "POST",
-                data: { id: id },
+                data: { id: idPolOnEm },
                 success: function (res) {
                     swal.close();
                     let data = res[0];
@@ -43,7 +43,7 @@ function deniedBtn(id) {
                             timer: 2500,
                             button: "Close",
                         }).then((value) => {
-                            $("#policiesEmployeesTableBody").html("");
+                            $("#policyRequestTableBody").html("");
                             loadData();
                         });
                     }
@@ -53,7 +53,7 @@ function deniedBtn(id) {
     });
 }
 
-function acceptedBtn(id) {
+function acceptedBtn(idPolOnEm) {
     swal({
         title: "Accept Confirm?",
         text: "Do you want to accept this user's policy?",
@@ -66,9 +66,9 @@ function acceptedBtn(id) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: '/admin/policiesonemployees/accept',
+                url: '/admin/policyrequest/accept',
                 type: "POST",
-                data: { id: id },
+                data: { id: idPolOnEm },
                 success: function (res) {
                     swal.close();
                     let data = res[0];
@@ -91,5 +91,5 @@ function acceptedBtn(id) {
 }
 
 function getDetail(id) {
-    window.location.href = "/admin/policiesonemployees/detail?id=" + id;
+    window.location.href = "/admin/policyrequest/detail?id=" + id;
 }

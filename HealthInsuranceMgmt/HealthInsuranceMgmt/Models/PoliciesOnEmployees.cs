@@ -14,6 +14,7 @@ namespace HealthInsuranceMgmt.Models
         public int PolicyId { get; set; }
         public int Id { get; set; }
         public int StatusId { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public virtual Employees Emp { get; set; }
         public virtual Policies Policy { get; set; }

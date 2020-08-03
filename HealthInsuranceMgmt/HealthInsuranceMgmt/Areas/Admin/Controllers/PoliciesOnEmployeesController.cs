@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -13,20 +14,25 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
     public class PoliciesOnEmployeesController : Controller
     {
         private IPoliciesOnEmployeesResponsitory ipoliciesOnEmployeesResponsitory;
-        public PoliciesOnEmployeesController(IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory)
+        private IPoliciesResponsitory ipoliciesResponsitory;
+        public PoliciesOnEmployeesController(IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory, IPoliciesResponsitory _ipoliciesResponsitory)
         {
             ipoliciesOnEmployeesResponsitory = _ipoliciesOnEmployeesResponsitory;
+            ipoliciesResponsitory = _ipoliciesResponsitory;
         }
+
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
         public IActionResult ShowData()
         {
-            var policiesList = ipoliciesOnEmployeesResponsitory.GetAll().OrderBy(p => p.Status).ThenBy(p => p.Emp.FirstName).ToList();
+            var policiesList = ipoliciesOnEmployeesResponsitory.GetAll().OrderBy(p => p.StatusId).ThenBy(p => p.Emp.FirstName).ToList();
 
             var html = "";
             var count = 0;
@@ -83,6 +89,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -90,10 +97,19 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail");
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("accept")]
         public async Task<IActionResult> Accept(int id)
         {
             var oldPolicy = await ipoliciesOnEmployeesResponsitory.GetById(id);
+            var policyData = await ipoliciesResponsitory.GetById(oldPolicy.PolicyId);
+            if (oldPolicy.StatusId == 1)
+            {
+                if (policyData.PolicyDuration != null)
+                {
+                    oldPolicy.EndDate = DateTime.Now.AddDays(Int64.Parse(policyData.PolicyDuration.ToString()));
+                }
+            }
             oldPolicy.StatusId = 2;
             await ipoliciesOnEmployeesResponsitory.Update(id, oldPolicy);
             return Json(new[] { new
@@ -102,6 +118,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("deny")]
         public async Task<IActionResult> Deny(int id)
         {
