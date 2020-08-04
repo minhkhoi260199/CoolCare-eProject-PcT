@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HealthInsuranceMgmt.Models.Respositories
 {
-    public class PolicyRequestDetailsResponsitor : GenericRepository<PolicyRequestDetails>, IPolicyRequestDetailsResponsitory
+    public class PolicyRequestDetailsResponsitory : GenericRepository<PolicyRequestDetails>, IPolicyRequestDetailsResponsitory
     {
-        public PolicyRequestDetailsResponsitor(DatabaseContext dbContext) : base(dbContext)
+        public PolicyRequestDetailsResponsitory(DatabaseContext dbContext) : base(dbContext)
         {
 
         }

@@ -28,13 +28,6 @@ namespace HealthInsuranceMgmt.Models
         public virtual DbSet<UserStatus> UserStatus { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=HealthInsuranceMgmt;user id=sa;password=P@ssw0rd");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -231,6 +224,8 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<PoliciesOnEmployees>(entity =>
             {
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
+
                 entity.HasOne(d => d.Emp)
                     .WithMany(p => p.PoliciesOnEmployees)
                     .HasForeignKey(d => d.EmpId)
@@ -259,6 +254,24 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.RequestDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Emp)
+                    .WithMany(p => p.PolicyRequestDetails)
+                    .HasForeignKey(d => d.EmpId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PolicyRequestDetails_Employees");
+
+                entity.HasOne(d => d.Policy)
+                    .WithMany(p => p.PolicyRequestDetails)
+                    .HasForeignKey(d => d.PolicyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PolicyRequestDetails_Policies");
+
+                entity.HasOne(d => d.StatusNavigation)
+                    .WithMany(p => p.PolicyRequestDetails)
+                    .HasForeignKey(d => d.Status)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PolicyRequestDetails_Status");
             });
 
             modelBuilder.Entity<Status>(entity =>

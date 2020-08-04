@@ -3,7 +3,6 @@
     ViewData["Title"] = "Detail";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@*@model HealthInsuranceMgmt.Models.PoliciesOnEmployees*@
 <div class="container">
     <input type="text" id="id" value="@ViewBag.policy.Id" style="display:none" />
     <div class="">
@@ -48,7 +47,7 @@
                 <input type="text" class="form-control" value="@ViewBag.policy.Policy.Medical.Hospital.HospitalName" />
             </div>
             <div class="col-sm-4">
-                <label>Hospital's Name </label>
+                <label>Medical's Name </label>
                 <input type="text" class="form-control" value="@ViewBag.policy.Policy.Medical.MedicalName" />
             </div>
         </div>

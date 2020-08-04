@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -20,12 +21,14 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             iemployeesResponsitory = _iemployeesResponsitory;
             ipoliciesOnEmployeesResponsitory = _ipoliciesOnEmployeesResponsitory;
         }
+        [Authorize(Roles = "Admin")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("listData")]
         public IActionResult ShowData()
         {
@@ -75,6 +78,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -83,7 +87,8 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             ViewBag.policies = policies;
             return View("detail", employee);
         }
-        
+
+        [Authorize(Roles = "Admin")]
         [Route("edit")]
         public async Task<IActionResult> Edit(Employees employee)
         {
@@ -124,12 +129,14 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", employee);
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("create")]
         public IActionResult Create()
         {
             return View("create");
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("postcreate")]
         public async Task<IActionResult> PostCreate(Employees employee)
         {
@@ -170,6 +177,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("create");
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("block")]
         public async Task<IActionResult> Block(int id)
         {
