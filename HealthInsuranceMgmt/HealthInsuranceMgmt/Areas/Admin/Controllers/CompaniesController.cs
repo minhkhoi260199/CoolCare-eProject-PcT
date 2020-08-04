@@ -34,9 +34,23 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).ToList();
+
+            var companiesGetAllData = new List<CompanyDetails>();
+            var companies = new List<CompanyDetails>();
+            if (searchData != "" && searchData != null)
+            {
+                companiesGetAllData = icompanyDetailsResponsitory.GetAllWithoutTracking().Where(p => p.CompanyName.Contains(searchData)).ToList();
+                companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).Where(p => p.CompanyName.Contains(searchData)).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                companiesGetAllData = icompanyDetailsResponsitory.GetAllWithoutTracking().ToList();
+                companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).Skip(fromNum).Take(limitNum).ToList();
+            }
+
+            
 
             var html = "";
             var count = 0;
@@ -62,10 +76,26 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (companiesGetAllData.Count() % 5 == 0)
+            {
+                totalPage = companiesGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (companiesGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
+
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 

@@ -8,6 +8,8 @@ namespace HealthInsuranceMgmt.Models.EFCore
     {
         IQueryable<TEntity> GetAll();
 
+        IQueryable<TEntity> GetAllWithoutTracking();
+
         Task<TEntity> GetById(int id);
 
         Task Create(TEntity entity);

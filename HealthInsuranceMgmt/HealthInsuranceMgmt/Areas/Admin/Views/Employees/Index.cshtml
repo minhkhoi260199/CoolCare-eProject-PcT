@@ -14,11 +14,25 @@
         color: black;
     }
 </style>
-<div style="text-align:center">
-    <div class="form-control">
+<div style="margin-left:10px; margin-right: 10px">
+    <div style="text-align:center; margin-bottom:10px; margin-top:5px">
         <button id="createNew" type="button" class="btn btn-success">Create New Employee</button>
     </div>
-    <div class="table-responsive table-responsive-data2">
+    <div style="" class="form-group row">
+        <div class="col-md-3" style="text-align: center;">
+            <label>Search Employee's First Name: </label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="" id="searchFirstName" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="searchBtn" class="btn btn-success">Search</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="showAll" class="btn btn-info">Show All</button>
+        </div>
+    </div>
+    <div class="table-responsive table-responsive-data2" style="text-align:center">
         <table class="table table-data2" id="employeesTable">
             <thead style="background-color:black">
                 <tr>
@@ -57,6 +71,13 @@
             <tbody id="employeeTableBody">
             </tbody>
         </table>
+    </div>
+    <div style="margin-top: 10px">
+        <button type="button" class="btn btn-success" id="backBtn">Back</button>
+        <span style="margin-left: 10px; margin-right: 10px" id="showPage">1/1</span>
+        <button type="button" class="btn btn-success" id="nextBtn">Next</button>
+        <input type="text" style="display:none" id="curPage" value="1"/>
+        <input type="text" style="display:none" id="totalPage" value="1"/>
     </div>
 </div>
 <script src="~/js/Admin/employees/employeesList.js"></script>
