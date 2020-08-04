@@ -4,33 +4,42 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="table-responsive table-responsive-data2">
-    <table class="table table-data2">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Medical</th>
-                <th>Description</th>
-                <th>Hospital</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @{ var i = 0;}
-            @foreach (var medical in ViewBag.medicals)
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var medical in ViewBag.medicals)
+        {
+            @foreach (var policy in medical.Policies)
             {
-                i++;
-                <tr>
-                    <td><span>@i</span></td>
-                    <td>@medical.MedicalName</td>
-                    <td>@medical.MedicalDescription</td>
-                    <td>@ViewBag.hospitals</td>
-                    <td>
-                        <a asp-controller="Policy" asp-action="Index" asp-route-id="@medical.Id">View Polices</a>
-                    </td>
-                </tr>
-             }
-            <tr class="spacer"></tr>
-        </tbody>
-    </table>
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <strong class="card-title">@policy.PolicyName</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Medical</h4>
+                                <p>@medical.MedicalDescription</p>
+                                <h4 class="alert-heading">Policy</h4>
+                                <p>@policy.PolicyDesc</p>
+                                <h4 class="alert-heading">Hospital</h4>
+                                <p> @medical.Hospital.HospitalName</p>
+                                <hr>
+                                <p class="mb-0">
+                                    <a>Amount: </a> @policy.Amount.ToString("#,##0") vnd<br>
+                                    <a>Emi: </a> @policy.Emi.ToString("#,##0") vnd<br>
+                                    <a>Duration: </a> @policy.PolicyDuration months<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="policiesonemployees" asp-action="Index" asp-route-id="@policy.Id">Register</a>
+                    </div>
+                </div>
+            }
+                    
+        }
+    </div>
 </div>

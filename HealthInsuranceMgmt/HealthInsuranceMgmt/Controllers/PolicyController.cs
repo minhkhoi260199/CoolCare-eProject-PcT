@@ -16,25 +16,15 @@ namespace HealthInsuranceMgmt.Controllers
             db = _db;
         }
 
-        //View policies according to MedicalID
-        [Route("")]
-        [Route("index")]
-        public IActionResult Index(int id)
-        {
-            ViewBag.pageTitle = "Medicals & Policies";
-            ViewBag.policies = db.Medicals.Find(id).Policies.ToList();
-            return View("Index");
-        }
-
         //View policies list
         [Route("")]
-        [Route("list")]
+        [Route("index")]
         public IActionResult List(int id)
         {
             ViewBag.pageTitle = "Insurance packages";
             ViewBag.policies = db.Policies.ToList();
-            return View("List");
+            ViewBag.companies = db.CompanyDetails.ToList();//View company details popup
+            return View("Index");
         }
-
     }
 }

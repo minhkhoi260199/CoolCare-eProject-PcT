@@ -3,40 +3,69 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<div class="container-fluid">
-    <div class="row">
-        @foreach (var policy in ViewBag.policies)
-        {
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Policy Name</th>
+                <th>Hospital</th>
+                <th>Amount</th>
+                <th>Emi</th>
+                <th>Duration</th>
+                <th>Mecical</th>
+                <th>Insurance Company</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ var i = 0;}
+            @foreach (var policy in ViewBag.policies)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@policy.PolicyName</td>
+                    <td>@policy.Medical.Hospital.HospitalName</td>
+                    <td>@policy.Amount.ToString("#,##0") vnd</td>
+                    <td>@policy.Emi.ToString("#,##0") vnd</td>
+                    <td>@policy.PolicyDuration</td>
+                    <td>@policy.Medical.MedicalName</td>
+                    <td>
+                        <a data-toggle="modal" data-target="#smallmodal@(i)" asp-route-id="@policy.Medical.Company.Id">
+                            @policy.Medical.Company.CompanyName
+                        </a>
 
-            <div class="col-md-6">
-
-                <div class="card">
-
-                    <div class="card-header">
-
-                        <strong class="card-title">@policy.PolicyName</strong>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading">Medical</h4>
-                            <p>@policy.Medical.MedicalDescription</p>
-                            <h4 class="alert-heading">Policy</h4>
-                            <p>@policy.PolicyDesc</p>
-                            <p><a>Hospital:</a> @policy.Medical.Hospital.HospitalName</p>
-                            <hr>
-                            <p class="mb-0">
-                                <a>Amount: </a> @policy.Amount<br>
-                                <a>Emi: </a> @policy.Emi<br>
-                                <a>Duration(months): </a> @policy.PolicyDuration<br>
-                            </p>
+                        <div class="modal fade" id="smallmodal@(i)" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="smallmodalLabel">@policy.Medical.Company.CompanyName</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <b>Address: </b> @policy.Medical.Company.Address<br>
+                                            <b>Phone: </b> @policy.Medical.Company.Phone<br>
+                                            <b>Url: </b> <a href="@policy.Medical.Company.CompanyUrl">@policy.Medical.Company.CompanyUrl</a><br>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <a type="button" class="btn btn-primary" asp-controller="medical" asp-action="index" asp-route-id="@policy.Medical.Company.Id">Details</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="auth" asp-action="Register">Register</a>
-                    </div>
-                </div>
-            </div>
-
-        }
-    </div>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-success btn-lg btn-block" asp-controller="policiesonemployees" asp-action="Index" asp-route-id="@policy.Id">Register</a>
+                    </td>
+                </tr>
+            }
+                <tr class="spacer"></tr>
+            </tbody>
+    </table>
 </div>

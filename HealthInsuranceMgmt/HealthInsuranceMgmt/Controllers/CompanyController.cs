@@ -26,10 +26,4 @@ namespace HealthInsuranceMgmt.Controllers
             return View("Index");
         }
     }
-
-    [HttpGet]
-    public PartialViewResult Detail()
-    {
-        return PartialView("detail");
-    }
 }

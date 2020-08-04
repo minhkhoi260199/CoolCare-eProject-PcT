@@ -499,4 +499,4 @@ E:\Aptech_HK3\9_eProject\HealthInsuranceMgmt2\HealthInsuranceMgmt\obj\Debug\netc
 E:\Aptech_HK3\9_eProject\HealthInsuranceMgmt2\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\HealthInsuranceMgmt.pdb
 E:\Aptech_HK3\9_eProject\HealthInsuranceMgmt2\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\HealthInsuranceMgmt.genruntimeconfig.cache
 E:\Aptech_HK3\9_eProject\HealthInsuranceMgmt2\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Views\Policy\List.cshtml.g.cs
-E:\Aptech_HK3\SEM3-eProject-clone\SEM3-eProject-PcT\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Views\Policy\List.cshtml.g.cs
+E:\Aptech_HK3\SEM3-eProject-clone\SEM3-eProject-PcT\HealthInsuranceMgmt\HealthInsuranceMgmt\obj\Debug\netcoreapp3.1\Razor\Views\PoliciesOnEmployees\Index.cshtml.g.cs
