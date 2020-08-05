@@ -28,14 +28,14 @@ namespace HealthInsuranceMgmt.Controllers
             return View();
         }
         [HttpGet]
-        [Route("create")]
+        [Route("register")]
         public IActionResult Create()
         {
             var employees = new Employees();
-            return View("index");
+            return View("Register");
         }        
         [HttpPost]
-        [Route("create")]
+        [Route("register")]
         public async Task<IActionResult> Create(Employees employee)
         {
             
@@ -67,7 +67,7 @@ namespace HealthInsuranceMgmt.Controllers
                     Debug.WriteLine(errorMessage);
                 }
             }
-            return View("index");
+            return View("Register");
 
 
         }
