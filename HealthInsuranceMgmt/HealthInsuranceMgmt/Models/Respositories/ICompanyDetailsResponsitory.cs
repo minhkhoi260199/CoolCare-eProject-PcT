@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface ICompanyDetailsResponsitory : IGenericRepository<CompanyDetails>
-    { 
+    {
 
     }
 }

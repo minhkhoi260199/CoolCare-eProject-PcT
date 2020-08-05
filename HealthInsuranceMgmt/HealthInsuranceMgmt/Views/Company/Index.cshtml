@@ -2,6 +2,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
  }
+
 <div class="table-responsive table-responsive-data2">
     <table class="table table-data2">
         <thead>
@@ -24,11 +25,13 @@
                     <td>@company.CompanyName</td>
                     <td>@company.Address</td>
                     <td>@company.Phone</td>
-                    <td>@company.CompanyUrl</td>
                     <td>
-                        <a asp-controller="medical" asp-action="index" asp-route-id="@company.Id">View Medicals</a>
+                        <a href="@company.CompanyUrl">@company.CompanyUrl</a></td>
+                    <td>
+                        <a asp-controller="medical" asp-action="index" asp-route-id="@company.Id">View Details</a>
                     </td>
-                </tr>}
+                </tr>
+            }
             <tr class="spacer"></tr>
         </tbody>
     </table>
