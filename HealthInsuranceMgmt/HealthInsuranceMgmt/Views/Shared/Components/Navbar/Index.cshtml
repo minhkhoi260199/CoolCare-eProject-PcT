@@ -30,11 +30,6 @@
                                     <i class="fas fa-comments"></i>
                                     <span class="bot-line"></span>Contact Us</a>
                             </li>
-                            <li class="has-sub">
-                                <a asp-controller="home" asp-action="index">
-                                    <i class="fas fa-pencil-square"></i>
-                                    <span class="bot-line"></span>Feed Back</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="header__tool" style="z-index:1">
@@ -84,59 +79,17 @@
                             <a asp-controller="home" asp-action="index">
                                 <i class="far fa-comments"></i>Contact Us</a>
                         </li>
-                        <li>
-                            <a asp-controller="home" asp-action="index">
-                                <i class="fas fa-pencil-square"></i>Feed Back</a>
-                        </li>
                     </ul>
                 </div>
             </nav>
         </header>
         <div class="sub-header-mobile-2 d-block d-lg-none">
-            <div class="header__tool">
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2 clearfix js-item-menu">
-                        <div class="image">
-                            <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
-                        </div>
-                        <div class="content">
-                            <a class="js-acc-btn" href="#">User</a>
-                        </div>
-                        <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">User</a>
-                                    </h5>
-                                    <span class="email">user@example.com</span>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__footer">
-                                <a href="#">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="header__tool" style="z-index:1">
+                        <a asp-controller="auth" asp-action="index">
+                            <button type="button" class="btn btn-primary">
+                                Login &nbsp;
+                            <i class="fa fa-star"></i></button>
+                        </a>
+            </div>        
         </div>
         <!-- END HEADER MOBILE -->

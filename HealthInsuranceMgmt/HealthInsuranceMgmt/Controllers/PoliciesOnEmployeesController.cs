@@ -4,38 +4,46 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using Microsoft.AspNetCore.Mvc;
+using HealthInsuranceMgmt.Models.Respositories;
+
 
 namespace HealthInsuranceMgmt.Controllers
 {
     [Route("policiesOnEmployees")]
     public class PoliciesOnEmployeesController : Controller
     {
-        private DatabaseContext db;
-        public PoliciesOnEmployeesController(DatabaseContext _db)
+        private IPoliciesOnEmployeesResponsitory ipoliciesOnEmployeesResponsitory;
+        private IPoliciesResponsitory ipoliciesResponsitory;
+        private IEmployeesResponsitory iemployeeResponsitory;
+
+        public PoliciesOnEmployeesController(IEmployeesResponsitory _iEmployeesResponsitory, IPoliciesResponsitory _ipoliciesResponsitory, IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory)
         {
-            db = _db;
+            ipoliciesOnEmployeesResponsitory = _ipoliciesOnEmployeesResponsitory;
+            ipoliciesResponsitory = _ipoliciesResponsitory;
+            iemployeeResponsitory = _iEmployeesResponsitory;
         }
 
         //Requisition Form
         [Route("")]
         [Route("index/{id}")]
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
             ViewBag.pageTitle = "Requisition Form";
-            ViewBag.requests = db.Policies.Where(p => p.Id == id).ToList();
-            ViewBag.employees = db.Employees.Where(p => p.Id == 1).ToList();
+            ViewBag.policie = await ipoliciesResponsitory.GetByIdHavingTracking(1);
+            ViewBag.employee = await iemployeeResponsitory.GetByIdHavingTracking(1);
+            
             return View("Index");
         }
 
         // Add register info to DB
         [HttpPost]
         [Route("submit")]
-        public IActionResult Submit(string companyInsurance)
+        public IActionResult Submit(PoliciesOnEmployees policiesOnEmployees)
         {
-           // db.PoliciesOnEmployees.Add(companyInsurance);
+            policiesOnEmployees.StatusId = 1;
+            ipoliciesOnEmployeesResponsitory.Create(policiesOnEmployees);
 
-            db.SaveChanges();
-            return RedirectToAction("home/index");
+            return RedirectToAction("index", "home");
         }
     }
 }

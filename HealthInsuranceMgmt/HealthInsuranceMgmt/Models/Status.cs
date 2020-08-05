@@ -12,7 +12,7 @@ namespace HealthInsuranceMgmt.Models
         }
 
         public int Id { get; set; }
-        public string Status1 { get; set; }
+        public string StatusName { get; set; }
 
         public virtual ICollection<PoliciesOnEmployees> PoliciesOnEmployees { get; set; }
         public virtual ICollection<PolicyRequestDetails> PolicyRequestDetails { get; set; }

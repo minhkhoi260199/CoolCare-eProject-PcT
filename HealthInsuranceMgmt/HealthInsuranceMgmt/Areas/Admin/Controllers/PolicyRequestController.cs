@@ -73,7 +73,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     "<td>" + request.Policy.PolicyName + "</td>" +
                     "<td>" + request.Reason + "</td>" +
                     "<td>" + approveDate + "</td>" +
-                    "<td style='color:" + color + "; font-weight:bold'>" + request.StatusNavigation.Status1 + "</td>" +
+                    "<td style='color:" + color + "; font-weight:bold'>" + request.StatusNavigation.StatusName + "</td>" +
                     "<td><a href='#' onclick='getDetail(" + request.Id.ToString() + ")' style='font-weight:bold;'>View Detail</a> | ";
                 if (request.Status == 1)
                 {

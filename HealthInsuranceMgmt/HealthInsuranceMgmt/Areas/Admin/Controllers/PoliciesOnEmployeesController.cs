@@ -61,7 +61,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     "<td>" + policy.Policy.Medical.MedicalName + "</td>" +
                     "<td>" + policy.Policy.Medical.Hospital.HospitalName + "</td>" +
                     "<td>" + policy.Policy.Medical.Company.CompanyName + "</td>" +
-                    "<td style='color:" + color + "; font-weight:bold'>" + policy.Status.Status1 + "</td>" +
+                    "<td style='color:" + color + "; font-weight:bold'>" + policy.Status.StatusName + "</td>" +
                     "<td><a href='#' onclick='getDetail("+ policy.Id.ToString() + ")' style='font-weight:bold;'>View Detail</a> | ";
                 if(policy.StatusId == 1)
                 {

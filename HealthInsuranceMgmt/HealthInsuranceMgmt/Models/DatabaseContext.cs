@@ -276,7 +276,7 @@ namespace HealthInsuranceMgmt.Models
 
             modelBuilder.Entity<Status>(entity =>
             {
-                entity.Property(e => e.Status1)
+                entity.Property(e => e.StatusName)
                     .HasColumnName("Status")
                     .HasMaxLength(250)
                     .IsUnicode(false);
