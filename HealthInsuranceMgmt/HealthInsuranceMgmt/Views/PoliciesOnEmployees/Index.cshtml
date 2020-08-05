@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                @foreach (var request in ViewBag.requests)
+                                {
+                                    @foreach (var employee in ViewBag.employees)
+                                    {
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Welcome you!
+                                            </div>
+                                            <div class="card-body card-block">
+                                                <form action="" method="post" class="form-horizontal">
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Username</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.Username" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">First Name</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.FirstName" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Last Name</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.LastName" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Designation</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.Designation" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Phone</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.Phone" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Address</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.Address" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">City</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.City" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">State</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.State" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Country</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@employee.Country" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Company Insurance</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="companyInsurance" value="@request.Medical.Company.CompanyName" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Medical type</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@request.PolicyName" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Duration (months)</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@request.PolicyDuration" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Amounts (vnd)</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@request.Amount.ToString("#,##0")" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-sm-4">
+                                                            <label for="input-small" class=" form-control-label">Emi (vnd)</label>
+                                                        </div>
+                                                        <div class="col col-sm-8">
+                                                            <input type="text" id="input-small" name="input-small" value="@request.Emi.ToString("#,##0")" class="input-sm form-control-sm form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+

@@ -276,14 +276,22 @@ section {
 .page-wrapper {
     overflow: hidden;
     background: #e5e5e5;
+<<<<<<< HEAD
     padding-bottom: 0vh;
+=======
+    padding-bottom: 8vh;
+>>>>>>> Trang
 }
 
 @media (max-width: 991px) {
     .page-wrapper {
     overflow: auto;
     background: #e5e5e5;
+<<<<<<< HEAD
     padding-bottom: 0vh;
+=======
+    padding-bottom: 12vh;
+>>>>>>> Trang
 }
 }
 .page-container {
