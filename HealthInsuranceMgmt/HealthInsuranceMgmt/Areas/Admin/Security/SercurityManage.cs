@@ -16,6 +16,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Security
         {
             List<Claim> claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, adminLogin.FirstName));
+            claims.Add(new Claim(ClaimTypes.Email, adminLogin.Email));
             claims.Add(new Claim(ClaimTypes.Role, adminLogin.UserTypeNavigation.Name));
             return claims;
         }
