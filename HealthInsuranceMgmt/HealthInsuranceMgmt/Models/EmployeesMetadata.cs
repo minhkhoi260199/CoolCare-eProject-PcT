@@ -10,9 +10,9 @@ namespace HealthInsuranceMgmt.Models
 {
     public class EmployeesMetadata
     {
-        [Required]
+        [Required(ErrorMessage ="Please enter your Firstname")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your Lastname")]
         public string LastName { get; set; }
         [MinLength(6)]
         [MaxLength(10)]
@@ -21,7 +21,14 @@ namespace HealthInsuranceMgmt.Models
         [MaxLength(10)]
         public string Password { get; set; }
         [Phone]
+        [Required(ErrorMessage = "Please enter your Phone")]
         public string Phone { get; set; }
+        [Required(ErrorMessage = "Please enter your State")]
+        public string State { get; set; }
+        [Required(ErrorMessage = "Please enter your Address")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "Please enter your City")]
+        public string City { get; set; }
         [Required]
         public string Country { get; set; }
     }
