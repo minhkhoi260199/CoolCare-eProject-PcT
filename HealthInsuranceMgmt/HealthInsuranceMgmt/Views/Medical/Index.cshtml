@@ -4,14 +4,14 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="container-fluid">
+<div class="container-fluid col-lg-8">
     <div class="row">
         @foreach (var medical in ViewBag.medicals)
         {
             @foreach (var policy in medical.Policies)
             {
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-6" style="margin-bottom:30px;">
+                    <div class="card" style="margin-bottom:0px;">
 
                         <div class="card-header">
 
