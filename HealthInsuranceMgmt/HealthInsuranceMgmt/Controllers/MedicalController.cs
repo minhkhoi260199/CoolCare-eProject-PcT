@@ -21,8 +21,8 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("index")]
         public IActionResult Index(int id)
         {
+            ViewBag.pageTitle = "Medicals and Policies";
             ViewBag.medicals = db.CompanyDetails.Find(id).Medicals.ToList();
-            ViewBag.hospitals = db.Medicals.Find(id).Hospital.HospitalName;
             return View("Index");
         }
     }
