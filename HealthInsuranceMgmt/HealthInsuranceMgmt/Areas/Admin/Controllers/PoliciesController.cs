@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -26,12 +27,15 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             ihospitalsResponsitory = _ihospitalsResponsitory;
             ipoliciesResponsitory = _ipoliciesResponsitory;
         }
+
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
         public IActionResult ShowData()
         {
@@ -72,6 +76,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -80,6 +85,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", policy);
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("edit")]
         public async Task<IActionResult> Edit(Policies policy)
         {
@@ -92,6 +98,8 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             ViewBag.medicals = imedicalsResponsitory.GetAll().OrderBy(p => p.MedicalName).ToList();
             return View("detail", policy);
         }
+
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("create")]
         public IActionResult Create()
         {
@@ -99,6 +107,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("create");
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("postcreate")]
         public async Task<IActionResult> PostCreate(Policies policy)
         {

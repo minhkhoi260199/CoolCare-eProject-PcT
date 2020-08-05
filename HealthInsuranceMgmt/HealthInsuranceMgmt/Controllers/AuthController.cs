@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using HealthInsuranceMgmt.Models.Respositories;
 
 namespace HealthInsuranceMgmt.Controllers
@@ -29,9 +30,21 @@ namespace HealthInsuranceMgmt.Controllers
             var userCheck = iEmployeesResponsitory.Login(userName, password);
             if(userCheck != null)
             {
+                HttpContext.Session.SetString("userId", userCheck.Id.ToString());
+                HttpContext.Session.SetString("userName", userCheck.FirstName + " " +userCheck.LastName);
+
                 return RedirectToAction("index","company");
             }
-            return new JsonResult(false);
+            return View();
+        }
+
+        [Route("logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("userId");
+            HttpContext.Session.Remove("userName");
+
+            return RedirectToAction("index","home");
         }
     }
 }

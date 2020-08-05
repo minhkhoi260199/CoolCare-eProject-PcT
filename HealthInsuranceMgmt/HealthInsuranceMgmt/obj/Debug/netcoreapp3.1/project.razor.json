@@ -20571,6 +20571,11 @@
   "RootNamespace": "HealthInsuranceMgmt",
   "Documents": [
     {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/PoliciesOnEmployees/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\PoliciesOnEmployees\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/Companies/Create.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Companies\\Create.cshtml",
       "FileKind": "mvc"
@@ -20596,8 +20601,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/PolicyRequest/Detail.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\PolicyRequest\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Views/Shared/Components/AdNavBar/AdminNav.cshtml",
       "TargetPath": "Views\\Shared\\Components\\AdNavBar\\AdminNav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/PolicyRequest/Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\PolicyRequest\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20646,6 +20661,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/PoliciesOnEmployees/Detail.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\PoliciesOnEmployees\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/Shared/_Layout.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -20658,6 +20678,11 @@
     {
       "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Views/Shared/_UserLayout.cshtml",
       "TargetPath": "Views\\Shared\\_UserLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Views/PoliciesOnEmployees/Index.cshtml",
+      "TargetPath": "Views\\PoliciesOnEmployees\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20693,6 +20718,11 @@
     {
       "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/_ViewImports.cshtml",
       "TargetPath": "_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/Areas/Admin/Views/Login/accessDenied.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Login\\accessDenied.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Http;
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
@@ -9,17 +10,17 @@
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
-                            <li class="has-sub">
+                            <li>
                                 <a asp-controller="home" asp-action="index">
                                     <i class="fas fa-home"></i>Home
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="has-sub">
                                 <a asp-controller="home" asp-action="index">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Search information</a>
-                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <ul class="header3-sub-list list-unstyled">
                                     <li>
                                         <a href="index.html">Companies</a>
                                     </li>
@@ -28,11 +29,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="has-sub">
                                 <a asp-controller="home" asp-action="index">
                                     <i class="fas fa-heart"></i>
                                     <span class="bot-line"></span>Requests</a>
-                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <ul class="header3-sub-list list-unstyled">
                                     <li>
                                         <a href="index.html">For Insurances</a>
                                     </li>
@@ -46,7 +47,7 @@
                                     <i class="fas fa-comments"></i>
                                     <span class="bot-line"></span>Contact Us</a>
                             </li>
-                            <li class="has-sub">
+                            <li>
                                 <a asp-controller="home" asp-action="index">
                                     <i class="fas fa-pencil-square"></i>
                                     <span class="bot-line"></span>Feed Back</a>
@@ -60,7 +61,7 @@
                                     <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
                                 </div>
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">User</a>
+                                    <a class="js-acc-btn" href="#">@Context.Session.GetString("userName")</a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
@@ -71,9 +72,8 @@
                                         </div>
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#">User</a>
+                                                <a href="#">@Context.Session.GetString("userName")</a>
                                             </h5>
-                                            <span class="email">User@example.com</span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -83,15 +83,11 @@
                                         </div>
                                         <div class="account-dropdown__item">
                                             <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                <i class="zmdi zmdi-account"></i>Change Password</a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="#">
+                                        <a asp-controller="auth" asp-action="logout">
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
@@ -154,7 +150,7 @@
                             <img src="~/images/icon/avatar-01.jpg" alt="avatar" />
                         </div>
                         <div class="content">
-                            <a class="js-acc-btn" href="#">User</a>
+                            <a class="js-acc-btn" href="#">@Context.Session.GetString("userName")</a>
                         </div>
                         <div class="account-dropdown js-dropdown">
                             <div class="info clearfix">
@@ -165,9 +161,8 @@
                                 </div>
                                 <div class="content">
                                     <h5 class="name">
-                                        <a href="#">User</a>
+                                        <a href="#">@Context.Session.GetString("userName")</a>
                                     </h5>
-                                    <span class="email">user@example.com</span>
                                 </div>
                             </div>
                             <div class="account-dropdown__body">
@@ -175,17 +170,9 @@
                                     <a href="#">
                                         <i class="zmdi zmdi-account"></i>Account</a>
                                 </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
                             </div>
                             <div class="account-dropdown__footer">
-                                <a href="#">
+                                <a asp-controller="auth" asp-action="logout">
                                     <i class="zmdi zmdi-power"></i>Logout</a>
                             </div>
                         </div>

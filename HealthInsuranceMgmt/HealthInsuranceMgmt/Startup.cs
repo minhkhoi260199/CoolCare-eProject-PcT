@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,6 +36,14 @@ namespace HealthInsuranceMgmt
             services.AddScoped<IPoliciesResponsitory, PoliciesResponsitory>();
 
             services.AddScoped<IHospitalsResponsitory, HospitalsResponsitory>();
+            services.AddScoped<IPolicyRequestDetailsResponsitory, PolicyRequestDetailsResponsitory>();
+
+            services.AddSession();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+                options.LoginPath = "/admin/login";
+                options.LogoutPath = "/admin/login/logout";
+                options.AccessDeniedPath = "/admin/login/acceccDenied";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +56,10 @@ namespace HealthInsuranceMgmt
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

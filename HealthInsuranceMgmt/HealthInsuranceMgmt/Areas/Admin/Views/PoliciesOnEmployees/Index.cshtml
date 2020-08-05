@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #policiesEmployeesTable tr th {
+        color: white;
+        font-weight: bold;
+        font-size: 15px
+    }
+
+    #policiesEmployeesTable tbody tr td {
+        color: black;
+    }
+</style>
+<div style="margin-left:10px; margin-right: 10px; margin-bottom:10px">
+    <div class="table-responsive table-responsive-data2" style="text-align:center">
+        <table class="table table-data2" id="policiesEmployeesTable">
+            <thead style="background-color:black">
+                <tr>
+                    <th>
+                        Index
+                    </th>
+                    <th>
+                        Employee's First Name
+                    </th>
+                    <th>
+                        Employee's Last Name
+                    </th>
+                    <th>
+                        Policy's Name
+                    </th>
+                    <th>
+                        Medical's Name
+                    </th>
+                    <th>
+                        Hospital's Name
+                    </th>
+                    <th>
+                        Company's Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Function Buttons
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="policiesEmployeesTableBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/js/Admin/policiesonemployees/policiesOnEmployeesList.js"></script>
+
+

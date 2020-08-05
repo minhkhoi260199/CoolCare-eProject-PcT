@@ -12,5 +12,9 @@ namespace HealthInsuranceMgmt.Models.Respositories
         {
 
         }
+        public List<CompanyDetails> SearchName(string name)
+        {
+            return GetAll().Where(p => p.CompanyName.Contains(name)).ToList();
+        }
     }
 }

@@ -33,6 +33,15 @@
     <!-- Main CSS-->
     <link href="~/css/theme.css" rel="stylesheet" media="all">
 
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
+    @*<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 </head>
 
 <body class="animsition">
@@ -40,7 +49,6 @@
         <!-- Navbar-->
         @await Component.InvokeAsync("AdNavbar")
         <!-- End Navbar-->
-
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
             <!-- WELCOME-->
@@ -48,55 +56,56 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12" style="text-align: center; margin-top: 20px;">
-                            <h1 class="title-4">@ViewBag.pageTitle
-                            </h1>
-                            <hr class="line-seprate">
+                            <h1 class="title-4" id="pageTitle" style="color:red; font-weight:bold; text-decoration: underline; font-style: italic">
+                                @ViewBag.pageTitle
+                        </h1>
+                        <hr class="line-seprate">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END WELCOME-->
+        @RenderBody()
+        <!-- COPYRIGHT-->
+        <section class="p-t-60 p-b-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Cool Care Insurance - Copyright © 2020 Pc-Team</p>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- END WELCOME-->
-            @RenderBody()
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Cool Care Insurance - Copyright © 2020 Pc-Team</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END COPYRIGHT-->
-        </div>
-
+            </div>
+        </section>
+        <!-- END COPYRIGHT-->
     </div>
 
-    <!-- Jquery JS-->
-    <script src="~/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="~/vendor/slick/slick.min.js">
-    </script>
-    <script src="~/vendor/wow/wow.min.js"></script>
-    <script src="~/vendor/animsition/animsition.min.js"></script>
-    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="~/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="~/vendor/select2/select2.min.js">
-    </script>
+</div>
 
-    <!-- Main JS-->
-    <script src="~/js/main.js"></script>
+<!-- Jquery JS-->
+<script src="~/vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="~/vendor/slick/slick.min.js">
+</script>
+<script src="~/vendor/wow/wow.min.js"></script>
+<script src="~/vendor/animsition/animsition.min.js"></script>
+<script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="~/vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="~/vendor/select2/select2.min.js">
+</script>
+
+<!-- Main JS-->
+<script src="~/js/main.js"></script>
 
 </body>
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface IHospitalsResponsitory : IGenericRepository<Hospitals>
-    { 
-
+    {
+        public List<Hospitals> SearchName(string name);
     }
 }

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <input type="text" id="id" value="@ViewBag.request.Id" style="display:none" />
+    <div class="">
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>Request Date </label>
+                <input type="date" class="form-control" value="@Convert.ToDateTime(ViewBag.request.RequestDate).ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="col-sm-3">
+                <label>First Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Emp.FirstName" />
+            </div>
+            <div class="col-sm-3">
+                <label>Last Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Emp.LastName" />
+            </div>
+            <div class="col-sm-3">
+                <label>Policy's End Date </label>
+                <input type="date" class="form-control" value="@Convert.ToDateTime(ViewBag.policy.EndDate).ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
+        <div>
+            <hr style="height:5px;color:blue;background-color:gray" />
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label>Company's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.Medical.Company.CompanyName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Hospital's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.Medical.Hospital.HospitalName" />
+            </div>
+            <div class="col-sm-4">
+                <label>Medical's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.Medical.MedicalName" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>Policy's Name </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.PolicyName" />
+            </div>
+            <div class="col-sm-3">
+                <label>Policy's Duration </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.PolicyDuration" />
+            </div>
+            <div class="col-sm-3">
+                <label>Policy's Amount </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.Amount" />
+            </div>
+            <div class="col-sm-3">
+                <label>Monthly Payment </label>
+                <input type="text" class="form-control" value="@ViewBag.request.Policy.Emi" />
+            </div>
+        </div>
+        <div>
+            <hr style="height:5px;color:blue;background-color:gray" />
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-12">
+                <label>Policy's Duration </label>
+                <textarea rows="10" class="form-control">@ViewBag.request.Reason</textarea>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success form-control" id="acceptedBtn" onclick="acceptedBtn(@ViewBag.request.Id)">Accept</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger form-control" id="deniedBtn" onclick="deniedBtn(@ViewBag.request.Id)">Deny</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-warning form-control" id="btnGoback">Go Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Admin/policyrequest/detailPolicyRequest.js"></script>
+

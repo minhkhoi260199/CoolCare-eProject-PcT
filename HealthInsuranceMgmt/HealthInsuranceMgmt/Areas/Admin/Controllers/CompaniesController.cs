@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -23,16 +24,33 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             imedicalsResponsitory = _imedicalsResponsitory;
             ipoliciesResponsitory = _ipoliciesResponsitory;
         }
+
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).ToList();
+
+            var companiesGetAllData = new List<CompanyDetails>();
+            var companies = new List<CompanyDetails>();
+            if (searchData != "" && searchData != null)
+            {
+                companiesGetAllData = icompanyDetailsResponsitory.GetAllWithoutTracking().Where(p => p.CompanyName.Contains(searchData)).ToList();
+                companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).Where(p => p.CompanyName.Contains(searchData)).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                companiesGetAllData = icompanyDetailsResponsitory.GetAllWithoutTracking().ToList();
+                companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).Skip(fromNum).Take(limitNum).ToList();
+            }
+
+            
 
             var html = "";
             var count = 0;
@@ -58,13 +76,30 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (companiesGetAllData.Count() % 5 == 0)
+            {
+                totalPage = companiesGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (companiesGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
+
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -72,6 +107,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", company);
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("edit")]
         public async Task<IActionResult> Edit(CompanyDetails company)
         {
@@ -84,12 +120,14 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", company);
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("create")]
         public IActionResult Create()
         {
             return View("create");
         }
 
+        [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("postcreate")]
         public async Task<IActionResult> PostCreate(CompanyDetails company)
         {

@@ -20,11 +20,24 @@ namespace HealthInsuranceMgmt.Models.EFCore
             //return _dbContext.Set<TEntity>().AsNoTracking();
             return _dbContext.Set<TEntity>();
         }
+        public IQueryable<TEntity> GetAllWithoutTracking()
+        {
+            return _dbContext.Set<TEntity>().AsNoTracking();
+            return _dbContext.Set<TEntity>();
+        }
 
         public async Task<TEntity> GetById(int id)
         {
             return await _dbContext.Set<TEntity>()
                 .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id);
+            //return await _dbContext.Set<TEntity>()
+            //  .FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<TEntity> GetByIdHavingTracking(int id)
+        {
+            return await _dbContext.Set<TEntity>()
                 .FirstOrDefaultAsync(e => e.Id == id);
             //return await _dbContext.Set<TEntity>()
             //  .FirstOrDefaultAsync(e => e.Id == id);

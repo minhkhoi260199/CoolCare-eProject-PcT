@@ -1,19 +1,61 @@
-
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
-}
-
+﻿
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml"; }
+@model HealthInsuranceMgmt.Models.Employees
 <section class="welcome p-t-10">
     <div class="container">
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-top: 20px;">
                 <h3>Hellow this is home page la al la la</h3>
                 <hr class="line-seprate">
+                <div class="col-md-12">
+                    <center>
+                        <section class="has-form">
+                            <div class="card bg-warning col-md-8">
+                            </div>
+                        </section>
+                    </center>
+                </div>
+                <section class="has-form">
+                    <div class="container-fluid">
+                        
+                        <div class="row ">
+                            <div class="col-md-3">
+                                <span class="fa-stack">                                  
+                                    <i class="fa fa-dollar fa-stack-1x bg-ligh"></i>
+                                </span>
+                                <span class="meta-name">Phí trung bình: </span>
+                                <span class="meta-value">3.000 VND/ngày</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="fa-stack">                                    
+                                    <i class="fa fa-bell fa-stack-1x bg-ligh"></i>
+                                </span>
+                                <span class="meta-name">Thủ tục: </span>
+                                <span class="meta-value">5 phút qua điện thoại</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="fa-stack">                                   
+                                    <i class="fa fa-users fa-stack-1x  bg-ligh"></i>
+                                </span>
+                                <span class="meta-name">Bảo lãnh: </span>
+                                <span class="meta-value">150 bệnh viện</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="fa-stack">                                    
+                                    <i class="fa fa-h-square fa-stack-1x  bg-ligh"></i>
+                                </span>
+                                <span class="meta-name">Đối tượng: </span>
+                                <span class="meta-value">15 ngày tuổi - 60 tuổi</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 </section>
-
+<script src="~/js/Admin/employees/createEmployees.js"></script>
 
 

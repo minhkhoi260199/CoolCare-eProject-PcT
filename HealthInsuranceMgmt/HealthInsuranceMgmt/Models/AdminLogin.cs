@@ -1,10 +1,9 @@
-﻿using HealthInsuranceMgmt.Models.EFCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace HealthInsuranceMgmt.Models
 {
-    public partial class AdminLogin : IEntity
+    public partial class AdminLogin
     {
         public int Id { get; set; }
         public string UserName { get; set; }
