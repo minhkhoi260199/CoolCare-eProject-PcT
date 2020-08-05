@@ -8,6 +8,6 @@ namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface ICompanyDetailsResponsitory : IGenericRepository<CompanyDetails>
     {
-
+        public List<CompanyDetails> SearchName(string name);
     }
 }
