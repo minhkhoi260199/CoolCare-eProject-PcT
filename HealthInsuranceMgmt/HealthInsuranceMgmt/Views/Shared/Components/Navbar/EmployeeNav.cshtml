@@ -11,26 +11,26 @@
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a asp-controller="home" asp-action="index">
+                                <a asp-controller="employee" asp-action="index">
                                     <i class="fas fa-home"></i>Home
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
                             <li class="has-sub">
-                                <a asp-controller="home" asp-action="index">
+                                <a>
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Search information</a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">Companies</a>
+                                        <a asp-controller="company" asp-action="index">Companies</a>
                                     </li>
                                     <li>
-                                        <a href="index2.html">Hospital</a>
+                                        <a asp-controller="company" asp-action="index">Hospital</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="has-sub">
-                                <a asp-controller="home" asp-action="index">
+                                <a>
                                     <i class="fas fa-heart"></i>
                                     <span class="bot-line"></span>Requests</a>
                                 <ul class="header3-sub-list list-unstyled">
@@ -41,16 +41,6 @@
                                         <a href="index2.html">For Bills</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a asp-controller="home" asp-action="index">
-                                    <i class="fas fa-comments"></i>
-                                    <span class="bot-line"></span>Contact Us</a>
-                            </li>
-                            <li>
-                                <a asp-controller="home" asp-action="index">
-                                    <i class="fas fa-pencil-square"></i>
-                                    <span class="bot-line"></span>Feed Back</a>
                             </li>
                         </ul>
                     </div>

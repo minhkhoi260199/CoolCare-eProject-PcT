@@ -33,7 +33,7 @@ namespace HealthInsuranceMgmt.Controllers
                 HttpContext.Session.SetString("userId", userCheck.Id.ToString());
                 HttpContext.Session.SetString("userName", userCheck.FirstName + " " +userCheck.LastName);
 
-                return RedirectToAction("index","company");
+                return RedirectToAction("index","employee");
             }
             return View();
         }

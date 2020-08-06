@@ -7,6 +7,7 @@ using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace HealthInsuranceMgmt.Controllers
 {
@@ -27,6 +28,7 @@ namespace HealthInsuranceMgmt.Controllers
         {
             return View();
         }
+
         [HttpGet]
         [Route("register")]
         public IActionResult Create()

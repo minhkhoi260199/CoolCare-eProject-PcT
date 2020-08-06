@@ -13,10 +13,19 @@ namespace HealthInsuranceMgmt.Controllers
     {
         private IPoliciesOnEmployeesResponsitory ipoliciesOnEmployeesResponsitory;
         private IPoliciesResponsitory ipoliciesResponsitory;
+        
+        public EmployeeController(IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory)
+        {
+            ipoliciesOnEmployeesResponsitory = _ipoliciesOnEmployeesResponsitory;
+        }
+
+        [Route("")]
+        [Route("index")]
         public IActionResult Index()
         {
-            var id = Int16.Parse(HttpContext.Session.GetString("userId"));
-            ViewBag.emppolicies = ipoliciesOnEmployeesResponsitory.GetAll().Where(d => d.EmpId == id).OrderBy(p => p.StatusId).ToList();
+            ViewBag.Title = "Wellcome" + HttpContext.Session.GetString("userId");
+            var id = int.Parse(HttpContext.Session.GetString("userId"));
+            ViewBag.emppolicies = ipoliciesOnEmployeesResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.StatusId).ToList();
             return View();
         }
     }
