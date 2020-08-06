@@ -11,11 +11,14 @@ namespace HealthInsuranceMgmt.Models
     public class EmployeesMetadata
     {
         [Required(ErrorMessage ="Please enter your Firstname")]
+        [MinLength(6)]
+        [MaxLength(10)]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Please enter your Lastname")]
         public string LastName { get; set; }
         [MinLength(6)]
         [MaxLength(10)]
+        [Required]
         public string Username { get; set; }
         [MinLength(6)]
         [MaxLength(10)]

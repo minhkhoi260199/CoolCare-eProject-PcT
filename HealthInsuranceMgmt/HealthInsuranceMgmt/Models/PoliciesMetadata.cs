@@ -13,11 +13,11 @@ namespace HealthInsuranceMgmt.Models
         [Required]
         public string PolicyName { get; set; }
         [Required]
-        public decimal? Amount { get; set; }
+        public decimal Amount { get; set; }
         [Required]
-        public decimal? Emi { get; set; }
+        public decimal Emi { get; set; }
         [Required]
-        public int? PolicyDuration { get; set; }
+        public int PolicyDuration { get; set; }
         [Required]
         public int MedicalId { get; set; }
     }

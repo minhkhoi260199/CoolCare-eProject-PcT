@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.AdminLogin
+<div class="container">
+    <form style="margin:auto" method="post" asp-controller="profile" asp-action="edit">
+        <input type="text" asp-for="Id" style="display:none" />
+        <div class="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>First Name </label><span style="color:red; font-style: italic" asp-validation-for="FirstName"></span>
+                    <input asp-for="FirstName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Last Name <span style="color:red; font-style: italic" asp-validation-for="LastName"></span></label>
+                    <input asp-for="LastName" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>UserName <span style="color:red; font-style: italic" asp-validation-for="UserName"></span></label>
+                    <input asp-for="UserName" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Password <span style="color:red; font-style: italic" asp-validation-for="Password"></span></label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>Email <span style="color:red; font-style: italic" asp-validation-for="Email"></span></label>
+                    <input asp-for="Email" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                    <input asp-for="Phone" type="text" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label>Address <span style="color:red; font-style: italic" asp-validation-for="Address"></span></label>
+                    <input asp-for="Address" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success form-control" id="btnSubmit">Edit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/js/Admin/adminLogin/profile.js"></script>

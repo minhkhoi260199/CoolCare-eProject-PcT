@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,21 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var requestList = ipolicyRequestDetailsResponsitory.GetAll().OrderBy(p => p.Status).ThenByDescending(p => p.RequestDate).ThenBy(p => p.Emp.FirstName).ToList();
+            var requestList = new List<PolicyRequestDetails>();
+            var requestListGetAllData = new List<PolicyRequestDetails>();
+
+            if (searchData != "" && searchData != null)
+            {
+                requestListGetAllData = ipolicyRequestDetailsResponsitory.GetAllWithoutTracking().Where(p => p.Emp.FirstName.Contains(searchData)).ToList();
+                requestList = ipolicyRequestDetailsResponsitory.GetAll().Where(p => p.Emp.FirstName.Contains(searchData)).OrderBy(p => p.Status).ThenByDescending(p => p.RequestDate).ThenBy(p => p.Emp.FirstName).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                requestListGetAllData = ipolicyRequestDetailsResponsitory.GetAllWithoutTracking().ToList();
+                requestList = ipolicyRequestDetailsResponsitory.GetAll().OrderBy(p => p.Status).ThenByDescending(p => p.RequestDate).ThenBy(p => p.Emp.FirstName).Skip(fromNum).Take(limitNum).ToList();
+            }
 
             var html = "";
             var count = 0;
@@ -95,10 +108,26 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (requestListGetAllData.Count() % 5 == 0)
+            {
+                totalPage = requestListGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (requestListGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
+
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 

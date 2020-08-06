@@ -15,6 +15,20 @@
     }
 </style>
 <div style="margin-left:10px; margin-right: 10px; margin-bottom:10px">
+    <div style="" class="form-group row">
+        <div class="col-md-3" style="text-align: center;">
+            <label>Search Employee's Name: </label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="" id="searchEmployeeName" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="searchBtn" class="btn btn-success">Search</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" id="showAll" class="btn btn-info">Show All</button>
+        </div>
+    </div>
     <div class="table-responsive table-responsive-data2" style="text-align:center">
         <table class="table table-data2" id="policiesEmployeesTable">
             <thead style="background-color:black">
@@ -51,6 +65,13 @@
             <tbody id="policiesEmployeesTableBody">
             </tbody>
         </table>
+    </div>
+    <div style="margin-top: 10px">
+        <button type="button" class="btn btn-success" id="backBtn">Back</button>
+        <span style="margin-left: 10px; margin-right: 10px" id="showPage">1/1</span>
+        <button type="button" class="btn btn-success" id="nextBtn">Next</button>
+        <input type="text" style="display:none" id="curPage" value="1" />
+        <input type="text" style="display:none" id="totalPage" value="1" />
     </div>
 </div>
 <script src="~/js/Admin/policiesonemployees/policiesOnEmployeesList.js"></script>

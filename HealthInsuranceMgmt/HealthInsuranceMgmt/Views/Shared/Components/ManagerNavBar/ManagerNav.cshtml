@@ -16,19 +16,14 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li class="has-sub">
-                        <a asp-controller="employees" asp-action="index">
-                            <i class="fa fa-users"></i>Employee
+                        <a asp-controller="policiesonemployees" asp-action="index">
+                            <i class="fa fa-users"></i> List Policy On Employee
                             <span class="bot-line"></span>
                         </a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a asp-controller="policiesonemployees" asp-action="index">
-                                    List Policy On Employee
-                                </a>
-                            </li>
-                            <li>
                                 <a asp-controller="policyrequest" asp-action="index">
-                                   Request
+                                    Request
                                 </a>
                             </li>
                         </ul>
@@ -122,16 +117,11 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a asp-controller="employees" asp-action="index">
-                        <i class="fa fa-users"></i>Employee
+                    <a asp-controller="policiesonemployees" asp-action="index">
+                        <i class="fa fa-users"></i> List Policy On Employee
                         <span class="bot-line"></span>
                     </a>
                     <ul class="header3-sub-list list-unstyled">
-                        <li>
-                            <a asp-controller="policiesonemployees" asp-action="index">
-                                List Policy On Employee
-                            </a>
-                        </li>
                         <li>
                             <a asp-controller="policyrequest" asp-action="index">
                                 Request
@@ -193,10 +183,10 @@
                     </div>
                     <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                            <a href="#">
+                            <a asp-controller="profile" asp-action="index">
                                 <i class="zmdi zmdi-account"></i>Account
                             </a>
-                        </div>
+                        </div>          
                     </div>
                     <div class="account-dropdown__footer">
                         <a asp-controller="login" asp-action="logout">

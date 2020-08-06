@@ -37,9 +37,21 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var policies = ipoliciesResponsitory.GetAll().OrderBy(p => p.PolicyName).ToList();
+            var policies = new List<Policies>();
+            var policiesGetAllData = new List<Policies>();
+
+            if (searchData != "" && searchData != null)
+            {
+                policiesGetAllData = ipoliciesResponsitory.GetAllWithoutTracking().Where(p => p.PolicyName.Contains(searchData)).ToList();
+                policies = ipoliciesResponsitory.GetAll().OrderBy(p => p.PolicyName).Where(p => p.PolicyName.Contains(searchData)).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                policiesGetAllData = ipoliciesResponsitory.GetAllWithoutTracking().ToList();
+                policies = ipoliciesResponsitory.GetAll().OrderBy(p => p.PolicyName).Skip(fromNum).Take(limitNum).ToList();
+            }
 
             var html = "";
             var count = 0;
@@ -69,10 +81,25 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (policiesGetAllData.Count() % 5 == 0)
+            {
+                totalPage = policiesGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (policiesGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 
