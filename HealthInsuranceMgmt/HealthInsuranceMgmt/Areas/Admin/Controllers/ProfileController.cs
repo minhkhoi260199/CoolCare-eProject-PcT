@@ -38,7 +38,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(AdminLogin admin)
         {
             var oldAdmin = await iadminLoginResponsitory.GetById(admin.Id);      
-            if (admin.Password == "" && oldAdmin.Password != "")
+            if ((admin.Password == "" || admin.Password == null) && oldAdmin.Password != "")
             {
                 admin.Password = oldAdmin.Password;
             }
