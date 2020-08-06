@@ -15,35 +15,42 @@
             </div>
             <div class="header__navbar">
                 <ul class="list-unstyled">
-                    <li>
-                        <a asp-controller="employees" asp-action="index">
-                            <i class="fas fa-home"></i>Employee
-                            <span class="bot-line"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="hospitals" asp-action="index">
+                    <li class="has-sub">
+                        <a asp-controller="home" asp-action="index">
                             <i class="fas fa-copy"></i>
-                            <span class="bot-line"></span>Hospital
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="companies" asp-action="index">
-                            <i class="fas fa-heart"></i>
-                            <span class="bot-line"></span>Company
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="medicals" asp-action="index">
-                            <i class="fas fa-pencil-square"></i>
-                            <span class="bot-line"></span>Medical
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="policies" asp-action="index">
-                            <i class="fas fa-pencil-square"></i>
-                            <span class="bot-line"></span>Policy
-                        </a>
+                            <span class="bot-line"></span>Reference</a>
+                        <ul class="header3-sub-list list-unstyled">
+                            <li>
+                                <a asp-controller="employees" asp-action="index">
+                                    <i class="fas fa-user"></i>Employee
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="hospitals" asp-action="index">
+                                    <i class="fas fa-plus-square"></i>Hospital
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="companies" asp-action="index">
+                                    <i class="fas fa-home"></i>Company
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="medicals" asp-action="index">
+                                    <i class="fas fa-heart"></i>Medical
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="policies" asp-action="index">
+                                    <i class="fas fa-pencil-square"></i>Policy
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a asp-controller="policiesonemployees" asp-action="index">
