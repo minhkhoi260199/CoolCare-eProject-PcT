@@ -1,89 +1,95 @@
-
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+ViewData["Title"] = "Index";
+Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+@model HealthInsuranceMgmt.Models.Employees
 
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-header">
-            <strong>Employee Profile</strong>
-        </div>
-        <div class="card-body card-block">
-            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Username</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
+<div class="page-wrapper">
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- MAIN CONTENT-->
+        <div style="margin-top:10px">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Employee Profile</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <form asp-controller="employee" asp-action="submitedit" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <div class="row form-group">
+                                            <div class="col-sm-6">
+                                                <label>First Name </label><span style="color:red; font-style: italic" asp-validation-for="FirstName"></span>
+                                                <input asp-for="FirstName" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Last Name <span style="color:red; font-style: italic" asp-validation-for="LastName"></span></label>
+                                                <input asp-for="LastName" type="text" class="form-control" />
+                                            </div>
+                                        </div>    
+                                        <div class="row form-group">                    
+                                            <div class="col-sm-6">
+                                                <label>UserName <span style="color:red; font-style: italic" asp-validation-for="Username"></span></label>
+                                                <input asp-for="Username" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Password <span style="color:red; font-style: italic" asp-validation-for="Password"></span></label>
+                                                <input asp-for="Password" type="password" class="form-control" />
+                                            </div>
+                                        </div>   
+                                        <div class="row form-group">
+                                            <div class="col-sm-6">
+                                                <label>Designation <span style="color:red; font-style: italic" asp-validation-for="Designation"></span></label>
+                                                <input asp-for="Designation" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Salary <span style="color:red; font-style: italic" asp-validation-for="Salary"></span></label>
+                                                <input asp-for="Salary" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-6">
+                                                <label>Phone <span style="color:red; font-style: italic" asp-validation-for="Phone"></span></label>
+                                                <input asp-for="Phone" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-12">
+                                                <label>Address <span style="color:red; font-style: italic" asp-validation-for="Address"></span></label>
+                                                <input asp-for="Address" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-4">
+                                                <label>State <span style="color:red; font-style: italic" asp-validation-for="State"></span></label>
+                                                <input asp-for="State" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>City <span style="color:red; font-style: italic" asp-validation-for="City"></span></label>
+                                                <input asp-for="City" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>Country <span style="color:red; font-style: italic" asp-validation-for="Country"></span></label>
+                                                <input asp-for="Country" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <input type="hidden" asp-for="Id"/>
+                                        <input type="hidden" asp-for="Status"/>
+                                        <input type="hidden" asp-for="Designation"/>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Edit
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Your name</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">First Name + Last Name</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Static</label>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <p class="form-control-static">Username</p>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
-            </button>
+            </div>
         </div>
     </div>
 </div>
