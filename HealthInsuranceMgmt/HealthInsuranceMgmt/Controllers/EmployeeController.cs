@@ -36,5 +36,23 @@ namespace HealthInsuranceMgmt.Controllers
 
             return View("profile");
         }
+
+        
+        [Route("editprofile")]
+        public IActionResult EditProfile()
+        {
+            ViewBag.pageTitle = HttpContext.Session.GetString("userName") + " Profile";
+
+            return View("profile");
+        }
+        
+        [Route("password")]
+        public IActionResult ChangePass()
+        {
+            ViewBag.pageTitle = HttpContext.Session.GetString("userName") + " Profile";
+
+            return View("profile");
+        }
+
     }
 }
