@@ -23,10 +23,18 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            ViewBag.Title = "Wellcome" + HttpContext.Session.GetString("userId");
+            ViewBag.pageTitle = "Wellcome " + HttpContext.Session.GetString("userName");
             var id = int.Parse(HttpContext.Session.GetString("userId"));
             ViewBag.emppolicies = ipoliciesOnEmployeesResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.StatusId).ToList();
             return View();
+        }
+
+        [Route("profile")]
+        public IActionResult Profile()
+        {
+            ViewBag.pageTitle = HttpContext.Session.GetString("userName") + " Profile";
+
+            return View("profile");
         }
     }
 }

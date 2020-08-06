@@ -17,20 +17,24 @@
                                 </a>
                             </li>
                             <li class="has-sub">
-                                <a>
+                                <a href="#">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Search information</a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a asp-controller="company" asp-action="index">Companies</a>
+                                        <a asp-controller="company" asp-action="index">
+                                            <i class="fas fa-home"></i>Companies
+                                        </a>
                                     </li>
                                     <li>
-                                        <a asp-controller="company" asp-action="index">Hospital</a>
+                                        <a asp-controller="company" asp-action="index">
+                                            <i class="fas fa-plus-square"></i>Hospital
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="has-sub">
-                                <a>
+                                <a href="#">
                                     <i class="fas fa-heart"></i>
                                     <span class="bot-line"></span>Requests</a>
                                 <ul class="header3-sub-list list-unstyled">
@@ -68,11 +72,11 @@
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                            <a asp-controller="employee" asp-action="profile">
+                                                <i class="zmdi zmdi-account"></i>View profile</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a asp-controller="employee" asp-action="password">
                                                 <i class="zmdi zmdi-account"></i>Change Password</a>
                                         </div>
                                     </div>

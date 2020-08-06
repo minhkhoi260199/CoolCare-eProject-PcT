@@ -26,6 +26,8 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("/index")]
         public IActionResult Index()
         {
+            // HttpContext.Session.SetString("userId", "1");
+            // HttpContext.Session.SetString("userName", "Tester");
             return View();
         }
 
