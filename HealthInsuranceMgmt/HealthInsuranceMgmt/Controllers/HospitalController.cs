@@ -32,5 +32,6 @@ namespace HealthInsuranceMgmt.Controllers
             ViewBag.pageTitle = "Hospital List";
             ViewBag.hospitals = ihospitalRepository.GetAll().ToList();
             return View();
-        }    }
+        }    
+    }
 }

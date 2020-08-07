@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GqZpZ1NCLQPblnvLopnZxFj/wDbNUTB31vSHdG3f+Y74OnAD8T6oaXaPsJ7zEuvrAhsyfT24zdhS/0HGYgwQ8A==",
+  "dgSpecHash": "7R9dT0IWYxuSlPKLcD5myu0JfyUlQhbrUIsp8wuMktkZJ9JLtxal+R57qg/EevcKrow61Fk4iCl2+0ed38sIOg==",
   "success": true,
   "projectFilePath": "/home/coollahn/Documents/Aptech/SEM3-eProject/SEM3-eProject-PcT/HealthInsuranceMgmt/HealthInsuranceMgmt/HealthInsuranceMgmt.csproj",
   "expectedPackageFiles": [
+    "/home/coollahn/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
     "/home/coollahn/.nuget/packages/castle.core/4.4.0/castle.core.4.4.0.nupkg.sha512",
     "/home/coollahn/.nuget/packages/microsoft.aspnetcore.html.abstractions/2.2.0/microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "/home/coollahn/.nuget/packages/microsoft.aspnetcore.razor/2.2.0/microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
