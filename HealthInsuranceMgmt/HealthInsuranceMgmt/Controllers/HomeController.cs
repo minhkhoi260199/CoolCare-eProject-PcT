@@ -23,7 +23,7 @@ namespace HealthInsuranceMgmt.Controllers
         }
         [Route("")]
         [Route("~/")]
-        [Route("/index")]
+        [Route("index")]
         public IActionResult Index()
         {
             // HttpContext.Session.SetString("userId", "1");
