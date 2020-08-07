@@ -13,9 +13,9 @@ namespace HealthInsuranceMgmt.Models.Respositories
 
         }
 
-        public AdminLogin CheckLogin(string username, string password)
+        public AdminLogin CheckLogin(string username)
         {
-            return GetAll().Where(p => p.UserName.Equals(username) && p.Password.Equals(password)).SingleOrDefault();
+            return GetAll().Where(p => p.UserName.Equals(username)).SingleOrDefault();
         }
 
     }

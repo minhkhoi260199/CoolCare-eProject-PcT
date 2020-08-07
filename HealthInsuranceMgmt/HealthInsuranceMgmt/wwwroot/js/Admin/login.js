@@ -24,6 +24,9 @@
                 success: function (data) {
                     if (data) {
                         window.location.href = "/admin/policiesonemployees/list";
+                    } else {
+                        $("#usernameError").html("Username is wrong");
+                        $("#passwordError").html("Password is wrong");
                     }
                 }
             })
