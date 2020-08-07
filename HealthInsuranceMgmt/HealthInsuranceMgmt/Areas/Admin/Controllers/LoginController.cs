@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Areas.Admin.Security;
 using HealthInsuranceMgmt.Models.Respositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Areas.Admin.Controllers
@@ -25,15 +26,16 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
         {
             return View();
         }
-
+        //check login function
         [Route("postLogin")]
         [HttpPost]
         public IActionResult PostLogin(string userName, string password)
         {
             var userCheck = iadminLoginResponsitory.CheckLogin(userName, password);
-            Debug.WriteLine(userName);
             if(userCheck != null)
             {
+                var id = userCheck.Id;
+                HttpContext.Session.SetString("user_id", id.ToString());
                 securityManager.SignIn(HttpContext, userCheck);
                 return new JsonResult(true);
             }

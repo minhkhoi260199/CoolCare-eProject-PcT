@@ -16,52 +16,40 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li class="has-sub">
-                        <a href="#">
-                            <i class="fas fa-copy"></i>
-                            <span class="bot-line"></span>Reference</a>
+                        <a asp-controller="policiesonemployees" asp-action="index">
+                            <i class="fa fa-users"></i> List Policy On Employee
+                            <span class="bot-line"></span>
+                        </a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a asp-controller="employees" asp-action="index">
-                                    <i class="fas fa-user"></i>Employee
-                                    <span class="bot-line"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-controller="hospitals" asp-action="index">
-                                    <i class="fas fa-plus-square"></i>Hospital
-                                    <span class="bot-line"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-controller="companies" asp-action="index">
-                                    <i class="fas fa-home"></i>Company
-                                    <span class="bot-line"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-controller="medicals" asp-action="index">
-                                    <i class="fas fa-heart"></i>Medical
-                                    <span class="bot-line"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-controller="policies" asp-action="index">
-                                    <i class="fas fa-pencil-square"></i>Policy
-                                    <span class="bot-line"></span>
+                                <a asp-controller="policyrequest" asp-action="index">
+                                    Request
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a asp-controller="policiesonemployees" asp-action="index">
-                            <i class="fas fa-comments"></i>
-                            <span class="bot-line"></span>List Policy On Employee
+                        <a asp-controller="hospitals" asp-action="index">
+                            <i class="fa fa-hospital-o"></i>
+                            <span class="bot-line"></span>Hospital
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="policyrequest" asp-action="index">
-                            <i class="fas fa-comments"></i>
-                            <span class="bot-line"></span>Request
+                        <a asp-controller="companies" asp-action="index">
+                            <i class="fa fa-building"></i>
+                            <span class="bot-line"></span>Company
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="medicals" asp-action="index">
+                            <i class="fa fa-medkit"></i>
+                            <span class="bot-line"></span>Medical
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="policies" asp-action="index">
+                            <i class="fas fa-pencil-square"></i>
+                            <span class="bot-line"></span>Policy
                         </a>
                     </li>
                 </ul>
@@ -129,16 +117,11 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a asp-controller="employees" asp-action="index">
-                        <i class="fa fa-users"></i>Employee
+                    <a asp-controller="policiesonemployees" asp-action="index">
+                        <i class="fa fa-users"></i> List Policy On Employee
                         <span class="bot-line"></span>
                     </a>
                     <ul class="header3-sub-list list-unstyled">
-                        <li>
-                            <a asp-controller="policiesonemployees" asp-action="index">
-                                List Policy On Employee
-                            </a>
-                        </li>
                         <li>
                             <a asp-controller="policyrequest" asp-action="index">
                                 Request
@@ -200,10 +183,10 @@
                     </div>
                     <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                            <a href="#">
+                            <a asp-controller="profile" asp-action="index">
                                 <i class="zmdi zmdi-account"></i>Account
                             </a>
-                        </div>
+                        </div>          
                     </div>
                     <div class="account-dropdown__footer">
                         <a asp-controller="login" asp-action="logout">

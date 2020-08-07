@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,21 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var policiesList = ipoliciesOnEmployeesResponsitory.GetAll().OrderBy(p => p.StatusId).ThenBy(p => p.Emp.FirstName).ToList();
+            var policiesList = new List<PoliciesOnEmployees>();
+            var policiesListGetAllData = new List<PoliciesOnEmployees>();
+
+            if (searchData != "" && searchData != null)
+            {
+                policiesListGetAllData = ipoliciesOnEmployeesResponsitory.GetAllWithoutTracking().Where(p => p.Emp.FirstName.Contains(searchData)).ToList();
+                policiesList = ipoliciesOnEmployeesResponsitory.GetAll().Where(p => p.Emp.FirstName.Contains(searchData)).OrderBy(p => p.StatusId).ThenBy(p => p.Emp.FirstName).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                policiesListGetAllData = ipoliciesOnEmployeesResponsitory.GetAllWithoutTracking().ToList();
+                policiesList = ipoliciesOnEmployeesResponsitory.GetAll().OrderBy(p => p.StatusId).ThenBy(p => p.Emp.FirstName).Skip(fromNum).Take(limitNum).ToList();
+            }
 
             var html = "";
             var count = 0;
@@ -82,10 +95,26 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (policiesListGetAllData.Count() % 5 == 0)
+            {
+                totalPage = policiesListGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (policiesListGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
+
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 

@@ -18,6 +18,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Security
             claims.Add(new Claim(ClaimTypes.Name, adminLogin.FirstName));
             claims.Add(new Claim(ClaimTypes.Email, adminLogin.Email));
             claims.Add(new Claim(ClaimTypes.Role, adminLogin.UserTypeNavigation.Name));
+            claims.Add(new Claim(ClaimTypes.UserData, adminLogin.Id.ToString()));
             return claims;
         }
 

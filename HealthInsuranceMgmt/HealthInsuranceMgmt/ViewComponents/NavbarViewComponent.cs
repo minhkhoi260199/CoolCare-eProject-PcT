@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace HealthInsuranceMgmt.ViewComponents
 {
@@ -28,6 +29,16 @@ namespace HealthInsuranceMgmt.ViewComponents
         {
             //Check session for information
             return View("AdminNav");
+        }
+    }
+
+    [ViewComponent(Name = "ManagerNavbar")]
+    public class ManagerNavbarViewComponent : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            //Check session for information
+            return View("ManagerNav");
         }
     }
 }

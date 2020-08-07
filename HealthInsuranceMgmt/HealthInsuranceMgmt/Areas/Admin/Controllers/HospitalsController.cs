@@ -30,10 +30,21 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var hospitals = ihospitalsResponsitory.GetAll().OrderBy(p => p.HospitalName).ToList();
-
+            var hospitals = new List<Hospitals>();
+            var hospitalsGetAllData = new List<Hospitals>();
+            
+            if (searchData != "" && searchData != null)
+            {
+                hospitalsGetAllData = ihospitalsResponsitory.GetAllWithoutTracking().Where(p => p.HospitalName.Contains(searchData)).ToList();
+                hospitals = ihospitalsResponsitory.GetAll().OrderBy(p => p.HospitalName).Where(p => p.HospitalName.Contains(searchData)).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                hospitalsGetAllData = ihospitalsResponsitory.GetAllWithoutTracking().ToList();  
+                hospitals = ihospitalsResponsitory.GetAll().OrderBy(p => p.HospitalName).Skip(fromNum).Take(limitNum).ToList();
+            }
             var html = "";
             var count = 0;
             foreach (var hopspital in hospitals)
@@ -58,10 +69,25 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (hospitalsGetAllData.Count() % 5 == 0)
+            {
+                totalPage = hospitalsGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (hospitalsGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                    pageTotal = totalPage
                 }});
         }
 

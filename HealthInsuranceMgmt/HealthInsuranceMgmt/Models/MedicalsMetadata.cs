@@ -13,9 +13,9 @@ namespace HealthInsuranceMgmt.Models
         [Required]
         public string MedicalName { get; set; }
         [Required]
-        public int? CompanyId { get; set; }
+        public int CompanyId { get; set; }
         [Required]
-        public int? HospitalId { get; set; }
+        public int HospitalId { get; set; }
     }
     [ModelMetadataType(typeof(MedicalsMetadata))]
     public partial class Medicals : IEntity

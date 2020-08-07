@@ -51,7 +51,6 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             }
 
             
-
             var html = "";
             var count = 0;
             foreach (var company in companies)
