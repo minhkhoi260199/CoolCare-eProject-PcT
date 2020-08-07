@@ -4,10 +4,10 @@
  }
 <section class="p-t-20">
     <div class="container">
-        <form asp-controller="company" asp-action="search" method="POST">
+        <form asp-controller="hospital" asp-action="search" method="POST">
             <div style="" class="form-group row">
                 <div class="col-md-3" style="text-align: center;">
-                    <label>Search Company: </label>
+                    <label>Search Hospital: </label>
                 </div>
                 <div class="col-md-4">
                     <input type="text" name="keyword" value="@ViewBag.keyword"  class="form-control" />
@@ -16,12 +16,12 @@
                     <button type="submit" class="btn btn-success">Search</button>
                 </div>
                 <div class="col-md-2">
-                    <a asp-controller="company" asp-action="index">
+                    <a asp-controller="hospital" asp-action="index">
                     <button type="button" class="btn btn-info">Show All</button>
                     </a>
                 </div>
             </div>
-        </form>        
+        </form>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive table-responsive-data2">
@@ -29,7 +29,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Company Name</th>
+                                <th>Hospital Name</th>
                                 <th>Address</th>
                                 <th>Phone Number</th>
                                 <th>Website</th>
@@ -38,20 +38,20 @@
                         </thead>
                         <tbody>
                             @{ var i = 0;}
-                            @foreach (var company in ViewBag.companies)
+                            @foreach (var hospital in ViewBag.hospitals)
                             {
                                 i++;
                                 <tr class="tr-shadow">
                                     <td><span>@i</span></td>
-                                    <td>@company.CompanyName</td>
-                                    <td>@company.Address</td>
-                                    <td>@company.Phone</td>
+                                    <td>@hospital.HospitalName</td>
+                                    <td>@hospital.Location</td>
+                                    <td>@hospital.Phone</td>
                                     <td>
-                                        <a href="@company.CompanyUrl">@company.CompanyUrl</a></td>
+                                        <a href="@hospital.HospitalUrl">@hospital.HospitalUrl</a></td>
                                     <td>
                                         <div class="table-data-feature">
-                                        <a asp-controller="medical" asp-action="index" asp-route-id="@company.Id">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Choose this company">
+                                        <a asp-controller="medical" asp-action="hospitalMed" asp-route-id="@hospital.Id">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Choose this hospital">
                                                 <i class="zmdi zmdi-mail-send"> </i>
                                             </button>
                                         </a>

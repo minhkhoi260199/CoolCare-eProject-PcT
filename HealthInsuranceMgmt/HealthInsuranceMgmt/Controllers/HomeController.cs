@@ -7,6 +7,7 @@ using HealthInsuranceMgmt.Models;
 using HealthInsuranceMgmt.Models.Respositories;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace HealthInsuranceMgmt.Controllers
 {
@@ -22,11 +23,26 @@ namespace HealthInsuranceMgmt.Controllers
         }
         [Route("")]
         [Route("~/")]
-        [Route("/index")]
+        [Route("index")]
         public IActionResult Index()
         {
+            // HttpContext.Session.SetString("userId", "1");
+            // HttpContext.Session.SetString("userName", "Tester");
             return View();
         }
+        
+        [Route("aboutus")]
+        public IActionResult AboutUs()
+        {
+            return View("Aboutus");
+        }
+
+        [Route("contactus")]
+        public IActionResult ContactUs()
+        {
+            return View("ContactUs");
+        }
+        
         [HttpGet]
         [Route("register")]
         public IActionResult Create()
@@ -54,7 +70,7 @@ namespace HealthInsuranceMgmt.Controllers
             if (ModelState.IsValid)
             {
                 await iemployeesResponsitory.Create(employee);
-                return RedirectToAction("index", "employees");
+                return View("success");
             }
             foreach (var modelStateKey in ModelState.Keys)
             {

@@ -16,45 +16,52 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li class="has-sub">
-                        <a asp-controller="employees" asp-action="index">
-                            <i class="fa fa-users"></i>Employee
-                            <span class="bot-line"></span>
-                        </a>
+                        <a href="#">
+                            <i class="fas fa-copy"></i>
+                            <span class="bot-line"></span>Reference</a>
                         <ul class="header3-sub-list list-unstyled">
                             <li>
-                                <a asp-controller="policiesonemployees" asp-action="index">
-                                    List Policy On Employee
+                                <a asp-controller="employees" asp-action="index">
+                                    <i class="fas fa-user"></i>Employee
+                                    <span class="bot-line"></span>
                                 </a>
                             </li>
                             <li>
-                                <a asp-controller="policyrequest" asp-action="index">
-                                   Request
+                                <a asp-controller="hospitals" asp-action="index">
+                                    <i class="fas fa-plus-square"></i>Hospital
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="companies" asp-action="index">
+                                    <i class="fas fa-home"></i>Company
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="medicals" asp-action="index">
+                                    <i class="fas fa-heart"></i>Medical
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="policies" asp-action="index">
+                                    <i class="fas fa-pencil-square"></i>Policy
+                                    <span class="bot-line"></span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a asp-controller="hospitals" asp-action="index">
-                            <i class="fa fa-hospital-o"></i>
-                            <span class="bot-line"></span>Hospital
+                        <a asp-controller="policiesonemployees" asp-action="index">
+                            <i class="fas fa-comments"></i>
+                            <span class="bot-line"></span>List Policy On Employee
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="companies" asp-action="index">
-                            <i class="fa fa-building"></i>
-                            <span class="bot-line"></span>Company
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="medicals" asp-action="index">
-                            <i class="fa fa-medkit"></i>
-                            <span class="bot-line"></span>Medical
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="policies" asp-action="index">
-                            <i class="fas fa-pencil-square"></i>
-                            <span class="bot-line"></span>Policy
+                        <a asp-controller="policyrequest" asp-action="index">
+                            <i class="fas fa-comments"></i>
+                            <span class="bot-line"></span>Request
                         </a>
                     </li>
                 </ul>

@@ -6,7 +6,6 @@
 @model HealthInsuranceMgmt.Models.PoliciesOnEmployees;
 @using Microsoft.AspNetCore.Http;
 
-<body class="animsition">
     <div class="page-wrapper">
         <!-- PAGE CONTAINER-->
         <div class="page-container">
@@ -27,7 +26,7 @@
                                                             <label for="input-small" class=" form-control-label">Username</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.Username" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.Username" class="input-sm form-control-sm form-control">
                                                             <input type="hidden" value='@Context.Session.GetString("userId")' asp-for="EmpId">
                                                             <input type="hidden" value="@ViewBag.policie.Id" asp-for="PolicyId">
                                                         </div>
@@ -37,7 +36,7 @@
                                                             <label for="input-small" class=" form-control-label">First Name</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.FirstName" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.FirstName" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -45,7 +44,7 @@
                                                             <label for="input-small" class=" form-control-label">Last Name</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.LastName" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small"  disabled name="input-small" value="@ViewBag.employee.LastName" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -53,7 +52,7 @@
                                                             <label for="input-small" class=" form-control-label">Designation</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.Designation" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.Designation" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -61,7 +60,7 @@
                                                             <label for="input-small" class=" form-control-label">Phone</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.Phone" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.Phone" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -69,7 +68,7 @@
                                                             <label for="input-small" class=" form-control-label">Address</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.Address" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.Address" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -77,7 +76,7 @@
                                                             <label for="input-small" class=" form-control-label">City</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.City" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.City" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
 
@@ -86,7 +85,7 @@
                                                             <label for="input-small" class=" form-control-label">State</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.State" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.State" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -94,7 +93,7 @@
                                                             <label for="input-small" class=" form-control-label">Country</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.employee.Country" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.employee.Country" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -103,7 +102,7 @@
                                                             <label for="input-small" class=" form-control-label">Company Insurance</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="companyInsurance" value="@ViewBag.policie.Medical.Company.CompanyName" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="companyInsurance" value="@ViewBag.policie.Medical.Company.CompanyName" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -111,7 +110,7 @@
                                                             <label for="input-small" class=" form-control-label">Medical type</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.policie.PolicyName" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.policie.PolicyName" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -119,7 +118,7 @@
                                                             <label for="input-small" class=" form-control-label">Duration (months)</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.policie.PolicyDuration" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.policie.PolicyDuration" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -127,7 +126,7 @@
                                                             <label for="input-small" class=" form-control-label">Amounts (vnd)</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.policie.Amount.ToString("#,##0")" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.policie.Amount.ToString("#,##0")" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -135,7 +134,7 @@
                                                             <label for="input-small" class=" form-control-label">Emi (vnd)</label>
                                                         </div>
                                                         <div class="col col-sm-8">
-                                                            <input type="text" id="input-small" name="input-small" value="@ViewBag.policie.Emi.ToString("#,##0")" class="input-sm form-control-sm form-control">
+                                                            <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.policie.Emi.ToString("#,##0")" class="input-sm form-control-sm form-control">
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
@@ -155,5 +154,4 @@
         </div>
 
     </div>
-</body>
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using HealthInsuranceMgmt.Models.Respositories;
 
 
@@ -29,8 +30,9 @@ namespace HealthInsuranceMgmt.Controllers
         public async Task<IActionResult> Index(int id)
         {
             ViewBag.pageTitle = "Requisition Form";
-            ViewBag.policie = await ipoliciesResponsitory.GetByIdHavingTracking(1);
-            ViewBag.employee = await iemployeeResponsitory.GetByIdHavingTracking(1);
+            ViewBag.policie = await ipoliciesResponsitory.GetByIdHavingTracking(id);
+            var empId = int.Parse(HttpContext.Session.GetString("userId"));
+            ViewBag.employee = await iemployeeResponsitory.GetByIdHavingTracking(empId);
             
             return View("Index");
         }
@@ -41,9 +43,19 @@ namespace HealthInsuranceMgmt.Controllers
         public IActionResult Submit(PoliciesOnEmployees policiesOnEmployees)
         {
             policiesOnEmployees.StatusId = 1;
+
+            DateTime date = DateTime.Now;
+            policiesOnEmployees.EndDate = date.AddYears(1);
+
             ipoliciesOnEmployeesResponsitory.Create(policiesOnEmployees);
 
-            return RedirectToAction("index", "home");
+            return View("success");
+        }
+
+        [Route("success")]
+        public IActionResult Success(PoliciesOnEmployees policiesOnEmployees)
+        {
+            return RedirectToAction("index", "employee");
         }
     }
 }
