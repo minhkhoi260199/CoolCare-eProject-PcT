@@ -35,7 +35,7 @@ namespace HealthInsuranceMgmt.Controllers
 
                 return RedirectToAction("index","employee");
             }
-            return View();
+            return View("fail");
         }
 
         [Route("logout")]

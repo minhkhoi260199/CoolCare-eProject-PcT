@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HealthInsuranceMgmt.Models;
+using HealthInsuranceMgmt.Models.Respositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HealthInsuranceMgmt.Controllers
@@ -10,10 +11,10 @@ namespace HealthInsuranceMgmt.Controllers
     [Route("policy")]
     public class PolicyController : Controller
     {
-        private DatabaseContext db;
-        public PolicyController(DatabaseContext _db)
+        private IPoliciesResponsitory iPoliciesResponsitory;
+        public PolicyController(IPoliciesResponsitory _iPoliciesResponsitory)
         {
-            db = _db;
+            iPoliciesResponsitory = _iPoliciesResponsitory;
         }
 
         //View policies list
@@ -22,8 +23,7 @@ namespace HealthInsuranceMgmt.Controllers
         public IActionResult List(int id)
         {
             ViewBag.pageTitle = "Insurance packages";
-            ViewBag.policies = db.Policies.ToList();
-            ViewBag.companies = db.CompanyDetails.ToList();//View company details popup
+            ViewBag.policies = iPoliciesResponsitory.GetAll().Where(d => d.MedicalId.Equals(id)).ToList();
             return View("Index");
         }
     }

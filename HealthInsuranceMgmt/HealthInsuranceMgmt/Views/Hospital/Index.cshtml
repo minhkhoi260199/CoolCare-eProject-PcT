@@ -1,0 +1,52 @@
+﻿@{ 
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+ }
+<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Hospital Name</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
+                                <th>Website</th>
+                                <th>Choose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ var i = 0;}
+                            @foreach (var hospital in ViewBag.hospitals)
+                            {
+                                i++;
+                                <tr class="tr-shadow">
+                                    <td><span>@i</span></td>
+                                    <td>@hospital.HospitalName</td>
+                                    <td>@hospital.Location</td>
+                                    <td>@hospital.Phone</td>
+                                    <td>
+                                        <a href="@hospital.HospitalUrl">@hospital.HospitalUrl</a></td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                        <a asp-controller="medical" asp-action="hospitalMed" asp-route-id="@hospital.Id">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Choose this hospital">
+                                                <i class="zmdi zmdi-mail-send"> </i>
+                                            </button>
+                                        </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

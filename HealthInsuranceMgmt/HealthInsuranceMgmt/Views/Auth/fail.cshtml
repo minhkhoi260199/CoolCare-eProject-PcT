@@ -13,11 +13,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-8">
-                                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                    <span class="badge badge-pill badge-success">Success</span><br>
-                                    Your action has been done. Edited profile successfull.
-                                    <a asp-controller="employee" asp-action="index">
-                                    <button type="button" class="btn btn-success">Back to home</button>
+                                <div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                    <span class="badge badge-pill badge-warning">Fail</span>
+                                    Your username or password incorrect. Please try again.
+                                    <a asp-controller="auth" asp-action="index">
+                                    <button type="button" class="btn btn-success">Try again</button>
                                     </a>
                                 </div>        
                             </div>
