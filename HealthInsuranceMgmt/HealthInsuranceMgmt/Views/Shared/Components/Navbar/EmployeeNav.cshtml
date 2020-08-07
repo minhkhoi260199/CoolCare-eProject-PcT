@@ -19,7 +19,8 @@
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
-                                    <span class="bot-line"></span>Search information</a>
+                                    <span class="bot-line"></span>Reference
+                                    </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
                                         <a asp-controller="company" asp-action="index">
@@ -39,10 +40,16 @@
                                     <span class="bot-line"></span>Requests</a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="index.html">For Insurances</a>
+                                        
+                                        <a asp-controller="company" asp-action="index">
+                                            <i class="fas fa-plus-square"></i>For Insurances
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="index2.html">For Bills</a>
+                                        
+                                        <a asp-controller="request" asp-action="index">
+                                            <i class="fas fa-plus-square"></i>For Bills
+                                        </a>
                                     </li>
                                 </ul>
                             </li>

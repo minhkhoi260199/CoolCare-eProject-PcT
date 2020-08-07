@@ -14,11 +14,13 @@ namespace HealthInsuranceMgmt.Controllers
     {
         private IPoliciesOnEmployeesResponsitory ipoliciesOnEmployeesResponsitory;
         private IEmployeesResponsitory iemployeesResponsitory;
+        private IPolicyRequestDetailsResponsitory ipolicyRequestDetailsResponsitory;
         
-        public EmployeeController(IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory,IEmployeesResponsitory _iemployeesResponsitory)
+        public EmployeeController(IPolicyRequestDetailsResponsitory _ipolicyRequestDetailsResponsitory, IPoliciesOnEmployeesResponsitory _ipoliciesOnEmployeesResponsitory,IEmployeesResponsitory _iemployeesResponsitory)
         {
             ipoliciesOnEmployeesResponsitory = _ipoliciesOnEmployeesResponsitory;
             iemployeesResponsitory = _iemployeesResponsitory;
+            ipolicyRequestDetailsResponsitory = _ipolicyRequestDetailsResponsitory;
         }
 
         [Route("")]
@@ -28,6 +30,7 @@ namespace HealthInsuranceMgmt.Controllers
             ViewBag.pageTitle = "Wellcome " + HttpContext.Session.GetString("userName");
             var id = int.Parse(HttpContext.Session.GetString("userId"));
             ViewBag.emppolicies = ipoliciesOnEmployeesResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.StatusId).ToList();
+            ViewBag.polRequests = ipolicyRequestDetailsResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.Status).ToList();
             return View();
         }
 
@@ -78,6 +81,5 @@ namespace HealthInsuranceMgmt.Controllers
             }
             return RedirectToAction("profile","employee");
         }
-        
     }
 }

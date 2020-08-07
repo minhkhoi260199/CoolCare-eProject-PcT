@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h1 class="title-5 m-b-35" style="margin-bottom:10px;">Choose policy to make</h1>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-borderless table-data3">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Policy Name</th>
+                                <th>Amount</th>
+                                <th>Emi</th>
+                                <th>Duration</th>
+                                <th>Mecical</th>
+                                <th>Insurance Company</th>
+                                <th>Hospital</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ var i = 0;}
+                            @foreach (var policy in ViewBag.emppolicies)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@policy.Policy.PolicyName</td>
+                                    <td>@policy.Policy.Amount.ToString("#,##0") vnd</td>
+                                    <td>@policy.Policy.Emi.ToString("#,##0") vnd</td>
+                                    <td>@policy.Policy.PolicyDuration</td>
+                                    <td>@policy.Policy.Medical.MedicalName</td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#smallmodal@(i)" asp-route-id="@policy.Policy.Medical.Company.Id">
+                                            @policy.Policy.Medical.Company.CompanyName
+                                        </a>
+
+                                        <div class="modal fade" id="smallmodal@(i)" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="smallmodalLabel">@policy.Policy.Medical.Company.CompanyName</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            <b>Address: </b> @policy.Policy.Medical.Company.Address<br>
+                                                            <b>Phone: </b> @policy.Policy.Medical.Company.Phone<br>
+                                                            <b>Url: </b> <a href="@policy.Policy.Medical.Company.CompanyUrl">@policy.Policy.Medical.Company.CompanyUrl</a><br>
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a type="button" class="btn btn-primary" asp-controller="medical" asp-action="index" asp-route-id="@policy.Policy.Medical.Company.Id">Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@policy.Policy.Medical.Hospital.HospitalName</td>
+                                    <td>
+                                        @if(policy.StatusId != null){
+                                            switch(policy.StatusId){
+                                                case 1: <span style="color:orange">@policy.Status.StatusName</span>
+                                                break;
+                                                case 2: <span style="color:green">@policy.Status.StatusName</span>
+                                                break;
+                                                case 3: <span style="color:red">@policy.Status.StatusName</span>
+                                                break;
+                                                case 4: <span style="color:red">@policy.Status.StatusName</span>
+                                                break;
+                                            }
+                                        } else {
+                                            <span style="color:red">Errol</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <a asp-controller="request" asp-action="create" asp-route-id="@policy.Id">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Bill request">
+                                                    <i class="zmdi zmdi-mail-send"> </i>
+                                                </button>
+                                            </a>
+                                            &nbsp;
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                                <tr class="spacer"></tr>
+                            </tbody>
+                    </table>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
