@@ -25,7 +25,7 @@ namespace HealthInsuranceMgmt.Controllers
         public IActionResult Index()
         {
             var id = int.Parse(HttpContext.Session.GetString("userId"));
-            ViewBag.polRequests = ipolicyRequestDetailsResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.Status).ToList();
+            ViewBag.emppolicies = ipoliciesOnEmployeesResponsitory.GetAll().Where(p => p.EmpId.Equals(id)).OrderBy(p => p.StatusId).ToList();
             return View();
         }
 

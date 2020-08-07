@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- DATA TABLE -->
-                <h1 class="title-5 m-b-35" style="margin-bottom:10px;">Choose policy to make request</h1>
+                <h1 class="title-5 m-b-35" style="margin-bottom:10px;">Choose policy to make</h1>
                 <div class="table-responsive table-responsive-data2">
                     <table class="table table-borderless table-data3">
                         <thead>
@@ -89,6 +89,13 @@
                                             <a asp-controller="request" asp-action="create" asp-route-id="@policy.Id">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Bill request">
                                                     <i class="zmdi zmdi-mail-send"> </i>
+                                                </button>
+                                            </a>
+                                            &nbsp;
+                                            <a asp-controller="policiesOnEmployees" asp-action="cancel" asp-route-id="@policy.Id">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Cancel this policy">
+                                                    <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                             </a>
                                         </div>
