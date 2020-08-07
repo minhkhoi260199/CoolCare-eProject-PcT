@@ -37,16 +37,27 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
         [Route("edit")]
         public async Task<IActionResult> Edit(AdminLogin admin)
         {
-            var oldAdmin = await iadminLoginResponsitory.GetById(admin.Id);      
+            var oldAdmin = await iadminLoginResponsitory.GetById(admin.Id);
+            if (admin.Password != null && admin.Password != "")
+            {
+                admin.Password = BCrypt.Net.BCrypt.HashPassword(admin.Password);
+            }
             if ((admin.Password == "" || admin.Password == null) && oldAdmin.Password != "")
             {
                 admin.Password = oldAdmin.Password;
             }
             admin.UserType = oldAdmin.UserType;
+            var checkUserName = iadminLoginResponsitory.GetAllWithoutTracking().Where(p => p.UserName.Equals(admin.UserName) && p.Id != admin.Id).Count();
+            
+            if(checkUserName > 0)
+            {
+                ModelState.AddModelError("username", "Username is used.");
+                return View("index", admin);
+            }
             if (ModelState.IsValid)
             {
                 await iadminLoginResponsitory.Update(admin.Id, admin);
-                return RedirectToAction("index", "employees");
+                return RedirectToAction("index", "policiesonemployees");
             }
             return View("index", admin);
         }

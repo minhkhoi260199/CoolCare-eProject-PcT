@@ -8,6 +8,6 @@ namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface IAdminLoginResponsitory : IGenericRepository<AdminLogin>
     {
-        public AdminLogin CheckLogin(string username, string password);
+        public AdminLogin CheckLogin(string username);
     }
 }

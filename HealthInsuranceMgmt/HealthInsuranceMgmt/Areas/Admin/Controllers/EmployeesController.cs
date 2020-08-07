@@ -184,6 +184,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             employee.Status = 1;
             if (employee.Password != "" && employee.Password != null)
             {
+                employee.Password = BCrypt.Net.BCrypt.HashPassword(employee.Password);
                 employee.Status = 2;
             }
             else
