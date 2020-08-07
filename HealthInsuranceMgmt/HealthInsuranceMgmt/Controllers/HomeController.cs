@@ -30,7 +30,19 @@ namespace HealthInsuranceMgmt.Controllers
             // HttpContext.Session.SetString("userName", "Tester");
             return View();
         }
+        
+        [Route("aboutus")]
+        public IActionResult AboutUs()
+        {
+            return View("Aboutus");
+        }
 
+        [Route("contactus")]
+        public IActionResult ContactUs()
+        {
+            return View("ContactUs");
+        }
+        
         [HttpGet]
         [Route("register")]
         public IActionResult Create()
