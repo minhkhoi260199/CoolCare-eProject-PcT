@@ -11,19 +11,11 @@ namespace HealthInsuranceMgmt.Models
     public class CompanyDetailsMetadata
     {
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
-        [MinLength(6)]
-        [MaxLength(10)]
-        public string Username { get; set; }
-        [MinLength(6)]
-        [MaxLength(10)]
-        public string Password { get; set; }
+        public string CompanyName { get; set; }
         [Phone]
         public string Phone { get; set; }
-        [Required]
-        public string Country { get; set; }
+        [Url]
+        public string CompanyUrl { get; set; }
     }
     [ModelMetadataType(typeof(CompanyDetailsMetadata))]
     public partial class CompanyDetails : IEntity

@@ -23,8 +23,7 @@
                 url: "/admin/login/postLogin",
                 success: function (data) {
                     if (data) {
-                        console.log("Hello");
-                        window.location.href = "/admin/employees/list";
+                        window.location.href = "/admin/policiesonemployees/list";
                     }
                 }
             })

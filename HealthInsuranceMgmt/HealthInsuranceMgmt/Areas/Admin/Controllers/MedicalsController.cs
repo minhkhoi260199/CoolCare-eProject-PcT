@@ -34,9 +34,23 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
         [Route("listData")]
-        public IActionResult ShowData()
+        public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
-            var medicals = imedicalsResponsitory.GetAll().OrderBy(p => p.MedicalName).ToList();
+            var medicals = new List<Medicals>();
+            var medicalsGetAllData = new List<Medicals>();
+
+            var companiesGetAllData = new List<CompanyDetails>();
+            var companies = new List<CompanyDetails>();
+            if (searchData != "" && searchData != null)
+            {
+                medicalsGetAllData = imedicalsResponsitory.GetAllWithoutTracking().Where(p => p.MedicalName.Contains(searchData)).ToList();
+                medicals = imedicalsResponsitory.GetAll().OrderBy(p => p.MedicalName).Where(p => p.MedicalName.Contains(searchData)).Skip(fromNum).Take(limitNum).ToList();
+            }
+            else
+            {
+                medicalsGetAllData = imedicalsResponsitory.GetAllWithoutTracking().ToList();
+                medicals = imedicalsResponsitory.GetAll().OrderBy(p => p.MedicalName).Skip(fromNum).Take(limitNum).ToList();
+            }
 
             var html = "";
             var count = 0;
@@ -62,10 +76,26 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     html += "</tr><tr class='spacer'></tr>";
                 }
             }
+
+            var totalPage = 0;
+            if (companiesGetAllData.Count() % 5 == 0)
+            {
+                totalPage = medicalsGetAllData.Count() / 5;
+            }
+            else
+            {
+                totalPage = (medicalsGetAllData.Count() / 5) + 1;
+            }
+            if (totalPage == 0)
+            {
+                totalPage = 1;
+            }
+
             return Json(new[] { new
                 {
                     status = true,
-                    data = html
+                    data = html,
+                     pageTotal = totalPage
                 }});
         }
 

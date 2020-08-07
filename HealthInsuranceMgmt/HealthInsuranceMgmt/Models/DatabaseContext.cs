@@ -28,12 +28,11 @@ namespace HealthInsuranceMgmt.Models
         public virtual DbSet<UserStatus> UserStatus { get; set; }
         public virtual DbSet<UserType> UserType { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdminLogin>(entity =>
             {
-                entity.Property(e => e.Adrress)
+                entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -212,6 +211,7 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.PolicyName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
