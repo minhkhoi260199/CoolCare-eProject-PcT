@@ -27,13 +27,16 @@ namespace HealthInsuranceMgmt.Controllers
         [HttpPost]
         public IActionResult Login(string userName, string password)
         {
-            var userCheck = iEmployeesResponsitory.Login(userName, password);
+            var userCheck = iEmployeesResponsitory.Login(userName);
             if(userCheck != null)
             {
-                HttpContext.Session.SetString("userId", userCheck.Id.ToString());
-                HttpContext.Session.SetString("userName", userCheck.FirstName + " " +userCheck.LastName);
+                if (BCrypt.Net.BCrypt.Verify(password, userCheck.Password))
+                {
+                    HttpContext.Session.SetString("userId", userCheck.Id.ToString());
+                    HttpContext.Session.SetString("userName", userCheck.FirstName + " " + userCheck.LastName);
 
-                return RedirectToAction("index","employee");
+                    return RedirectToAction("index", "employee");
+                }
             }
             return View("fail");
         }

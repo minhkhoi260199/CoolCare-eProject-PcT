@@ -56,6 +56,7 @@ namespace HealthInsuranceMgmt.Controllers
             }
             if(employee.Password != "" && employee.Status != 1 && employee.Password != null)
             {
+                employee.Password = BCrypt.Net.BCrypt.HashPassword(employee.Password);
                 employee.Status = 2;
             }
             else

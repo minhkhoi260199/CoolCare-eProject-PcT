@@ -8,6 +8,6 @@ namespace HealthInsuranceMgmt.Models.Respositories
 {
     public interface IEmployeesResponsitory : IGenericRepository<Employees>
     { 
-        public Employees Login(string username, string password);
+        public Employees Login(string username);
     }
 }
