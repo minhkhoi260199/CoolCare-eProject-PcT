@@ -16,12 +16,12 @@
                             <tr>
                                 <th>No</th>
                                 <th>Policy Name</th>
-                                <th>Hospital</th>
                                 <th>Amount</th>
                                 <th>Emi</th>
                                 <th>Duration</th>
                                 <th>Mecical</th>
                                 <th>Insurance Company</th>
+                                <th>Hospital</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -34,7 +34,6 @@
                                 <tr>
                                     <td>@i</td>
                                     <td>@policy.Policy.PolicyName</td>
-                                    <td>@policy.Policy.Medical.Hospital.HospitalName</td>
                                     <td>@policy.Policy.Amount.ToString("#,##0") vnd</td>
                                     <td>@policy.Policy.Emi.ToString("#,##0") vnd</td>
                                     <td>@policy.Policy.PolicyDuration</td>
@@ -68,6 +67,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td>@policy.Policy.Medical.Hospital.HospitalName</td>
                                     <td>
                                         @if(policy.StatusId != null){
                                             switch(policy.StatusId){
@@ -86,22 +86,18 @@
                                     </td>
                                     <td>
                                         <div class="table-data-feature">
-                                            @* <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button> *@
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
+                                            <a asp-controller="request" asp-action="create" asp-route-id="@policy.Id">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Bill request">
+                                                    <i class="zmdi zmdi-mail-send"> </i>
+                                                </button>
+                                            </a>
+                                            &nbsp;
+                                            <a asp-controller="policiesOnEmployees" asp-action="cancel" asp-route-id="@policy.Id">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Cancel this policy">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -118,68 +114,70 @@
                             <tr>
                                 <th>No</th>
                                 <th>Policy Name</th>
-                                <th>Hospital</th>
                                 <th>Amount</th>
                                 <th>Emi</th>
                                 <th>Duration</th>
                                 <th>Mecical</th>
                                 <th>Insurance Company</th>
+                                <th>Hospital</th>
+                                <th>Reason</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @{ var j = 0;}
-                            @foreach (var policy in ViewBag.emppolicies)
+                            @foreach (var request in ViewBag.polRequests)
                             {
                                 j++;
                                 <tr>
                                     <td>@j</td>
-                                    <td>@policy.Policy.PolicyName</td>
-                                    <td>@policy.Policy.Medical.Hospital.HospitalName</td>
-                                    <td>@policy.Policy.Amount.ToString("#,##0") vnd</td>
-                                    <td>@policy.Policy.Emi.ToString("#,##0") vnd</td>
-                                    <td>@policy.Policy.PolicyDuration</td>
-                                    <td>@policy.Policy.Medical.MedicalName</td>
+                                    <td>@request.Policy.PolicyName</td>
+                                    <td>@request.Policy.Amount.ToString("#,##0") vnd</td>
+                                    <td>@request.Policy.Emi.ToString("#,##0") vnd</td>
+                                    <td>@request.Policy.PolicyDuration</td>
+                                    <td>@request.Policy.Medical.MedicalName</td>
                                     <td>
-                                        <a data-toggle="modal" data-target="#smallmodal@(i)" asp-route-id="@policy.Policy.Medical.Company.Id">
-                                            @policy.Policy.Medical.Company.CompanyName
+                                        <a data-toggle="modal" data-target="#smallmodal@(i)" asp-route-id="@request.Policy.Medical.Company.Id">
+                                            @request.Policy.Medical.Company.CompanyName
                                         </a>
 
                                         <div class="modal fade" id="smallmodal@(i)" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-sm" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="smallmodalLabel">@policy.Policy.Medical.Company.CompanyName</h5>
+                                                        <h5 class="modal-title" id="smallmodalLabel">@request.Policy.Medical.Company.CompanyName</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>
-                                                            <b>Address: </b> @policy.Policy.Medical.Company.Address<br>
-                                                            <b>Phone: </b> @policy.Policy.Medical.Company.Phone<br>
-                                                            <b>Url: </b> <a href="@policy.Policy.Medical.Company.CompanyUrl">@policy.Policy.Medical.Company.CompanyUrl</a><br>
+                                                            <b>Address: </b> @request.Policy.Medical.Company.Address<br>
+                                                            <b>Phone: </b> @request.Policy.Medical.Company.Phone<br>
+                                                            <b>Url: </b> <a href="@request.Policy.Medical.Company.CompanyUrl">@request.Policy.Medical.Company.CompanyUrl</a><br>
                                                         </p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a type="button" class="btn btn-primary" asp-controller="medical" asp-action="index" asp-route-id="@policy.Policy.Medical.Company.Id">Details</a>
+                                                        <a type="button" class="btn btn-primary" asp-controller="medical" asp-action="index" asp-route-id="@request.Policy.Medical.Company.Id">Details</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
+                                    <td>@request.Policy.Medical.Hospital.HospitalName</td>
+                                    <td>@request.Reason</td>
                                     <td>
-                                        @if(policy.StatusId != null){
-                                            switch(policy.StatusId){
-                                                case 1: <span style="color:orange">@policy.Status.StatusName</span>
+                                        @if(request.Status != null){
+                                            switch(request.Status){
+                                                case 1: <span style="color:orange">@request.StatusNavigation.StatusName</span>
                                                 break;
-                                                case 2: <span style="color:green">@policy.Status.StatusName</span>
+                                                case 2: <span style="color:green">@request.StatusNavigation.StatusName</span>
                                                 break;
-                                                case 3: <span style="color:red">@policy.Status.StatusName</span>
+                                                case 3: <span style="color:red">@request.StatusNavigation.StatusName</span>
                                                 break;
-                                                case 4: <span style="color:red">@policy.Status.StatusName</span>
+                                                case 4: <span style="color:red">@request.StatusNavigation.StatusName</span>
                                                 break;
                                             }
                                         } else {
@@ -188,22 +186,12 @@
                                     </td>
                                     <td>
                                         <div class="table-data-feature">
-                                            @* <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button> *@
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
+                                            <a asp-controller="request" asp-action="cancel" asp-route-id="@request.Id">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Cancel this request">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>

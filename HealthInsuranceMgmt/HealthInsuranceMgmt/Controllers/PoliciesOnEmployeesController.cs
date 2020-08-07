@@ -52,10 +52,13 @@ namespace HealthInsuranceMgmt.Controllers
             return View("success");
         }
 
-        [Route("success")]
-        public IActionResult Success(PoliciesOnEmployees policiesOnEmployees)
+        [Route("cancel/{id}")]
+        public async Task<IActionResult> Cancel(int id)
         {
-            return RedirectToAction("index", "employee");
+            var oldPolicy = await ipoliciesOnEmployeesResponsitory.GetById(id);
+            oldPolicy.StatusId = 3;
+            ipoliciesOnEmployeesResponsitory.Update(id, oldPolicy);
+            return View("success");
         }
     }
 }

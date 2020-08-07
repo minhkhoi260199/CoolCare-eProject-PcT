@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model HealthInsuranceMgmt.Models.PolicyRequestDetails
+@using Microsoft.AspNetCore.Http;
+
+    <div class="page-wrapper">
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- MAIN CONTENT-->
+            <div style="margin-top:10px">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Welcome you!
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form asp-controller="request" asp-action="submit" method="post" class="form-horizontal">
+                                            <input type="hidden" value='@Context.Session.GetString("userId")' asp-for="EmpId">
+                                            <input type="hidden" value="@ViewBag.polOnEmp.Policy.Id" asp-for="PolicyId">
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">First Name</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.polOnEmp.Emp.FirstName" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">Last Name</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.polOnEmp.Emp.LastName" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">Phone</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.polOnEmp.Emp.Phone" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">Company Insurance</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="companyInsurance" value="@ViewBag.polOnEmp.Policy.Medical.Company.CompanyName" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">Medical type</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.polOnEmp.Policy.Medical.MedicalName" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class=" form-control-label">Hospital</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <input type="text" id="input-small" disabled name="input-small" value="@ViewBag.polOnEmp.Policy.Medical.Hospital.HospitalName" class="input-sm form-control-sm form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-sm-4">
+                                                    <label for="input-small" class="form-control-label">Reason</label>
+                                                </div>
+                                                <div class="col col-sm-8">
+                                                    <textarea asp-for="Reason" rows="3" placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
