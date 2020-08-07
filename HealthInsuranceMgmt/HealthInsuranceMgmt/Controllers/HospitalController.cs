@@ -24,5 +24,13 @@ namespace HealthInsuranceMgmt.Controllers
             ViewBag.hospitals = ihospitalRepository.GetAll().ToList();
             return View();
         }
-    }
+
+        [HttpPost]
+        [Route("searchByName")]
+        public IActionResult SearchByName(String keyword)
+        {
+            ViewBag.pageTitle = "Hospital List";
+            ViewBag.hospitals = ihospitalRepository.GetAll().ToList();
+            return View();
+        }    }
 }

@@ -70,7 +70,7 @@ namespace HealthInsuranceMgmt.Controllers
             if (ModelState.IsValid)
             {
                 await iemployeesResponsitory.Create(employee);
-                return RedirectToAction("index", "employees");
+                return View("success");
             }
             foreach (var modelStateKey in ModelState.Keys)
             {
