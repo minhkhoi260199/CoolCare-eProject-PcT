@@ -4,6 +4,24 @@
  }
 <section class="p-t-20">
     <div class="container">
+        <form asp-controller="company" asp-action="search" method="POST">
+            <div style="" class="form-group row">
+                <div class="col-md-3" style="text-align: center;">
+                    <label>Search Company: </label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="keyword" value="@ViewBag.keyword"  class="form-control" />
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+                <div class="col-md-2">
+                    <a asp-controller="company" asp-action="index">
+                    <button type="button" class="btn btn-info">Show All</button>
+                    </a>
+                </div>
+            </div>
+        </form>        
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive table-responsive-data2">

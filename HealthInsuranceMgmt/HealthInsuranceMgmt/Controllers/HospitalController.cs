@@ -26,12 +26,13 @@ namespace HealthInsuranceMgmt.Controllers
         }
 
         [HttpPost]
-        [Route("searchByName")]
+        [Route("search")]
         public IActionResult SearchByName(String keyword)
         {
-            ViewBag.pageTitle = "Hospital List";
-            ViewBag.hospitals = ihospitalRepository.GetAll().ToList();
-            return View();
+            ViewBag.pageTitle = "Search hospital";
+            ViewBag.keyword = keyword;
+            ViewBag.hospitals = ihospitalRepository.SearchName(keyword);
+            return View("index");
         }    
     }
 }
