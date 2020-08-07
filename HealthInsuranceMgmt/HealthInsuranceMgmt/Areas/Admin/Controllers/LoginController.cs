@@ -31,14 +31,17 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult PostLogin(string userName, string password)
         {
-            var userCheck = iadminLoginResponsitory.CheckLogin(userName, password);
-            if(userCheck != null)
+            var userCheck = iadminLoginResponsitory.CheckLogin(userName);           
+            if (userCheck != null)
             {
-                var id = userCheck.Id;
-                HttpContext.Session.SetString("user_id", id.ToString());
-                securityManager.SignIn(HttpContext, userCheck);
-                return new JsonResult(true);
-            }
+                if (BCrypt.Net.BCrypt.Verify(password, userCheck.Password))
+                {
+                    var id = userCheck.Id;
+                    HttpContext.Session.SetString("user_id", id.ToString());
+                    securityManager.SignIn(HttpContext, userCheck);
+                    return new JsonResult(true);
+                }
+        }
             return new JsonResult(false);
         }
         [Route("logout")]

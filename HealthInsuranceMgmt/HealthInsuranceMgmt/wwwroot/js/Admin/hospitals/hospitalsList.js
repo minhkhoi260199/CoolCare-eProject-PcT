@@ -78,3 +78,45 @@ function loadData(fromNum = 0, limitNum = 5, searchData = "") {
         }
     });
 }
+
+function deleteFunction(id) {
+    swal({
+        title: "Block Confirm?",
+        text: "Do you want to delete this hospital?",
+        icon: "warning",
+        buttons: {
+            confirm: "Yes",
+            cancel: "Close",
+        },
+        dangerMode: true,
+    }).then((willDelete) => {
+        $.ajax({
+            url: '/admin/hospitals/delete?id=' + id,
+            type: "POST",
+            success: function (res) {
+                let data = res[0];
+                if (data.status) {
+                    swal({
+                        title: "Succeed!",
+                        text: "Deleted Successful",
+                        icon: "success",
+                        button: {
+                            cancel: "Close",
+                        }
+                    })
+                    let searchHospitalData = $("#searchHospital").val();
+                    loadData(0, 5, searchHospitalData);
+                } else {
+                    swal({
+                        title: "Error!",
+                        text: data.error,
+                        icon: "error",
+                        button: {
+                            cancel: "Close",
+                        }
+                    })
+                }
+            }
+        })
+    });
+}

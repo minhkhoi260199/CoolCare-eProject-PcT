@@ -25,14 +25,14 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             ipoliciesResponsitory = _ipoliciesResponsitory;
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         [Route("list")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         [Route("listData")]
         public IActionResult ShowData(int fromNum, int limitNum, string searchData)
         {
@@ -69,6 +69,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     "<td><a href='"+ company.CompanyUrl + "'>" + company.CompanyUrl + "</a></td>" +
                     "<td>" +
                     "<a href='#' onclick='getDetail(" + company.Id.ToString() + ")' style='font-weight:bold'>More Details</a>" +
+                    " | <a href='#' onclick='deleteFunction(" + company.Id.ToString() + ")' style='font-weight:bold; color:red'>Delete</a>" +
                     "</td></tr>";
                 if (count < companies.Count())
                 {
@@ -98,7 +99,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 }});
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         [Route("detail")]
         public async Task<IActionResult> ShowDetail(int id)
         {
@@ -106,7 +107,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", company);
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         [Route("edit")]
         public async Task<IActionResult> Edit(CompanyDetails company)
         {
@@ -119,14 +120,15 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             return View("detail", company);
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        [Authorize(Roles = "Admin, Manager")]
         [Route("create")]
         public IActionResult Create()
         {
             return View("create");
         }
 
-        [Authorize(Roles = "Admin, Manager, Financial Manager")]
+        //Function create company
+        [Authorize(Roles = "Admin, Manager")]
         [Route("postcreate")]
         public async Task<IActionResult> PostCreate(CompanyDetails company)
         {
@@ -146,8 +148,41 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     Debug.WriteLine(errorMessage);
                 }
             }
-            Debug.WriteLine("LOI");
             return View("create");
+        }
+
+        //Function delete
+        [Authorize(Roles = "Admin, Manager")]
+        [Route("delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var checkMedical = imedicalsResponsitory.GetAllWithoutTracking().Where(p => p.HospitalId.Equals(id)).Count();
+                if (checkMedical > 0)
+                {
+                    return Json(new[] { new
+                    {
+                        status = false,
+                        error = "This company has some medical data on it, so please delete the medical before deleting this company",
+                    }});
+                }
+
+                await icompanyDetailsResponsitory.Delete(id);
+                return Json(new[] { new
+                {
+                    status = true,
+                }});
+            }
+            catch (Exception e)
+            {
+                return Json(new[] { new
+                {
+                    status = false,
+                    error = "Something went wrong, please contact the admin",
+                }});
+            }
+
         }
     }
 }

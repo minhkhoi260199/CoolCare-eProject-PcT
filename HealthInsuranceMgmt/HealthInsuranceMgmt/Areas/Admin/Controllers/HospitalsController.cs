@@ -15,10 +15,12 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
     public class HospitalsController : Controller
     {
         private IHospitalsResponsitory ihospitalsResponsitory;
+        private IMedicalsResponsitory imedicalsResponsitory;
 
-        public HospitalsController(IHospitalsResponsitory _ihospitalsResponsitory)
+        public HospitalsController(IHospitalsResponsitory _ihospitalsResponsitory, IMedicalsResponsitory _imedicalsResponsitory)
         {
             ihospitalsResponsitory = _ihospitalsResponsitory;
+            imedicalsResponsitory = _imedicalsResponsitory;
         }
 
         [Authorize(Roles = "Admin, Manager, Financial Manager")]
@@ -63,6 +65,7 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     "<td><a href='" + hopspital.HospitalUrl + "'>" + hopspital.HospitalUrl + "</a></td>" +
                     "<td>" +
                     "<a href='#' onclick='getDetail(" + hopspital.Id.ToString() + ")' style='font-weight:bold'>More Details</a>" +
+                    " | <a href='#' onclick='deleteFunction("+ hopspital.Id.ToString() + ")' style='font-weight:bold; color:red'>Delete</a>" + 
                     "</td></tr>";
                 if (count < hospitals.Count())
                 {
@@ -139,8 +142,40 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     Debug.WriteLine(errorMessage);
                 }
             }
-            Debug.WriteLine("LOI");
             return View("create");
+        }
+
+        [Authorize(Roles = "Admin, Manager")]
+        [Route("delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var checkMedical = imedicalsResponsitory.GetAllWithoutTracking().Where(p => p.HospitalId.Equals(id)).Count();
+                if(checkMedical > 0)
+                {
+                    return Json(new[] { new
+                    {
+                        status = false,
+                        error = "This hospital has some medical data on it, so please delete the medical before deleting the hospital",
+                    }});
+                }
+
+                await ihospitalsResponsitory.Delete(id);
+                return Json(new[] { new
+                {
+                    status = true,
+                }});
+            }
+            catch(Exception e)
+            {
+                return Json(new[] { new
+                {
+                    status = false,
+                    error = "Something went wrong, please contact the admin",
+                }});
+            }
+           
         }
 
     }

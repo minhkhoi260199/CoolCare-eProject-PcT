@@ -50,7 +50,7 @@ namespace HealthInsuranceMgmt.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Phone)
@@ -113,7 +113,6 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Country)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -122,17 +121,19 @@ namespace HealthInsuranceMgmt.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.FirstName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.JoinDate).HasColumnType("datetime");
 
                 entity.Property(e => e.LastName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Phone)
