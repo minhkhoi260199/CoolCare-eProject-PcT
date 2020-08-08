@@ -38,12 +38,12 @@ namespace HealthInsuranceMgmt.Controllers
 
         [HttpPost]
         [Route("submit")]
-        public IActionResult Submit(PolicyRequestDetails policyRequestDetails)
+        public async Task<IActionResult> Submit(PolicyRequestDetails policyRequestDetails)
         {
             DateTime date = DateTime.Now;
             policyRequestDetails.RequestDate = date;
             policyRequestDetails.Status = 1;
-            ipolicyRequestDetailsResponsitory.Create(policyRequestDetails);
+            await ipolicyRequestDetailsResponsitory.Create(policyRequestDetails);
 
             return View("success");
         }
@@ -53,7 +53,7 @@ namespace HealthInsuranceMgmt.Controllers
         {
             var oldRequest = await ipolicyRequestDetailsResponsitory.GetById(id);
             oldRequest.Status = 3;
-            ipolicyRequestDetailsResponsitory.Update(id, oldRequest);
+            await ipolicyRequestDetailsResponsitory.Update(id, oldRequest);
             return View("success");
         }
 
