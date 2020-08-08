@@ -142,18 +142,6 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 await imedicalsResponsitory.Create(medical);
                 return RedirectToAction("index", "medicals");
             }
-            foreach (var modelStateKey in ModelState.Keys)
-            {
-                var modelStateVal = ModelState[modelStateKey];
-                foreach (var error in modelStateVal.Errors)
-                {
-                    var key = modelStateKey;
-                    var errorMessage = error.ErrorMessage;
-                    Debug.WriteLine(key);
-                    Debug.WriteLine(errorMessage);
-                }
-            }
-            Debug.WriteLine("LOI");
             ViewBag.hospitals = ihospitalsResponsitory.GetAll().OrderBy(p => p.HospitalName).ToList();
             ViewBag.companies = icompanyDetailsResponsitory.GetAll().OrderBy(p => p.CompanyName).ToList();
             return View("create");

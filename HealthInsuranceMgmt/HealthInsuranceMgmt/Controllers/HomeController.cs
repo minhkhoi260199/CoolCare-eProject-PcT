@@ -55,37 +55,19 @@ namespace HealthInsuranceMgmt.Controllers
         public async Task<IActionResult> Create(Employees employee)
         {
             
-            if(employee.Address is null && employee.FirstName is null &&employee.LastName is null && employee.Phone is null && employee.State is null && employee.City is null )
+            if(employee.Address is null )
             {         
                 ModelState.AddModelError("Address", "Please enter your address");  
             }
-            else
+            if (ModelState.IsValid)
             {
                 employee.JoinDate = DateTime.Now;
                 employee.Status = 3;
                 employee.Country = "VietNam";
-                db.Employees.Add(employee);
-                db.SaveChanges();
-            }
-            if (ModelState.IsValid)
-            {
                 await iemployeesResponsitory.Create(employee);
                 return View("success");
             }
-            foreach (var modelStateKey in ModelState.Keys)
-            {
-                var modelStateVal = ModelState[modelStateKey];
-                foreach (var error in modelStateVal.Errors)
-                {
-                    var key = modelStateKey;
-                    var errorMessage = error.ErrorMessage;
-                    Debug.WriteLine(key);
-                    Debug.WriteLine(errorMessage);
-                }
-            }
             return View("Register");
-
-
         }
     }
 }

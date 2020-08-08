@@ -204,17 +204,6 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                 await iemployeesResponsitory.Create(employee);
                 return RedirectToAction("index", "employees");
             }
-            foreach (var modelStateKey in ModelState.Keys)
-            {
-                var modelStateVal = ModelState[modelStateKey];
-                foreach (var error in modelStateVal.Errors)
-                {
-                    var key = modelStateKey;
-                    var errorMessage = error.ErrorMessage;
-                    Debug.WriteLine(key);
-                        Debug.WriteLine(errorMessage);
-                }
-            }
            
             return View("create");
         }
