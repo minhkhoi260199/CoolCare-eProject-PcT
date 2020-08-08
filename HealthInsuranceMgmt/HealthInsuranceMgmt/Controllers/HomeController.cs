@@ -63,17 +63,6 @@ namespace HealthInsuranceMgmt.Controllers
                 await iemployeesResponsitory.Create(employee);
                 return View("success");
             }
-            foreach(var e in ModelState.Keys)
-            {
-                var modelState = ModelState[e];
-                foreach(var i in modelState.Errors)
-                {
-                    var key = e;
-                    var error = i.ErrorMessage;
-                    Debug.WriteLine(key);
-                    Debug.WriteLine(error);
-                }
-            }
             return View("Register");
         }
     }
