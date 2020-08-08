@@ -17,9 +17,10 @@ namespace HealthInsuranceMgmt.Controllers
         private IEmployeesResponsitory iemployeesResponsitory;
         private DatabaseContext db;
 
-        public HomeController(DatabaseContext _db)
+        public HomeController(DatabaseContext _db, IEmployeesResponsitory _iemployeesResponsitory)
         {
             db = _db;
+            iemployeesResponsitory = _iemployeesResponsitory;
         }
         [Route("")]
         [Route("~/")]
@@ -54,18 +55,24 @@ namespace HealthInsuranceMgmt.Controllers
         [Route("register")]
         public async Task<IActionResult> Create(Employees employee)
         {
-            
-            if(employee.Address is null )
-            {         
-                ModelState.AddModelError("Address", "Please enter your address");  
-            }
+            employee.JoinDate = DateTime.Now;
+            employee.Status = 3;
+            employee.Country = "VietNam";
             if (ModelState.IsValid)
-            {
-                employee.JoinDate = DateTime.Now;
-                employee.Status = 3;
-                employee.Country = "VietNam";
+            {            
                 await iemployeesResponsitory.Create(employee);
                 return View("success");
+            }
+            foreach(var e in ModelState.Keys)
+            {
+                var modelState = ModelState[e];
+                foreach(var i in modelState.Errors)
+                {
+                    var key = e;
+                    var error = i.ErrorMessage;
+                    Debug.WriteLine(key);
+                    Debug.WriteLine(error);
+                }
             }
             return View("Register");
         }

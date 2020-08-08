@@ -152,6 +152,10 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
                     employee.Password = oldEmployee.Password;
                 }
             }
+            if (employee.Username == "" || employee.Username == null)
+            {
+                ModelState.AddModelError("username", "Please enter username.");
+            }
             try {
                 var checkSal = decimal.Parse(employee.Salary.ToString());
             } catch(Exception e) {
@@ -197,6 +201,10 @@ namespace HealthInsuranceMgmt.Areas.Admin.Controllers
             }catch (Exception e)
             {
                 ModelState.AddModelError("salary", "Please enter a number.");
+            }
+            if(employee.Username == "" || employee.Username == null)
+            {
+                ModelState.AddModelError("username", "Please enter username.");
             }
             employee.JoinDate = DateTime.Now;
             if (ModelState.IsValid)
