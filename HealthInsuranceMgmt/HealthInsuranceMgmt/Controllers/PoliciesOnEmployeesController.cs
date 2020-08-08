@@ -40,14 +40,14 @@ namespace HealthInsuranceMgmt.Controllers
         // Add register info to DB
         [HttpPost]
         [Route("submit")]
-        public IActionResult Submit(PoliciesOnEmployees policiesOnEmployees)
+        public async Task<IActionResult> Submit(PoliciesOnEmployees policiesOnEmployees)
         {
             policiesOnEmployees.StatusId = 1;
 
             DateTime date = DateTime.Now;
             policiesOnEmployees.EndDate = date.AddYears(1);
 
-            ipoliciesOnEmployeesResponsitory.Create(policiesOnEmployees);
+            await ipoliciesOnEmployeesResponsitory.Create(policiesOnEmployees);
 
             return View("success");
         }
@@ -57,7 +57,7 @@ namespace HealthInsuranceMgmt.Controllers
         {
             var oldPolicy = await ipoliciesOnEmployeesResponsitory.GetById(id);
             oldPolicy.StatusId = 3;
-            ipoliciesOnEmployeesResponsitory.Update(id, oldPolicy);
+            await ipoliciesOnEmployeesResponsitory.Update(id, oldPolicy);
             return View("success");
         }
     }
